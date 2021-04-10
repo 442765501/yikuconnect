@@ -116,9 +116,7 @@ public class DingdingTest extends BaseTest {
 
     @Test
     public void test(){
-        String name ="浙江省_金华市_永康市_江南街道_大塘沿村";
-        name = name.substring(name.lastIndexOf("_")+1);
-        System.out.println(name);
+
 
     }
 }

@@ -1,0 +1,28 @@
+#Update 'access_token' 
+#Sun Jun 14 20:27:07 CST 2015
+template_userc=sichou
+tomcatdir=D\:/Tomcat/
+template_user=login_02
+cmsdir=G\:/cms_souce/
+logo_pic=
+server_ip=219.156.123.139
+site_name=SUNEASE_CLOUD
+server_login=
+logo_word=
+systemdir=G\:/cms_souce/
+sms_pwd=jdstgkpw
+site_key=SUNEASE_CLOUD
+admin_template=
+tomcatjvmdir=D\:/TomcatJVM/
+cnoren=1
+site_des=SUNEASE_CLOUD
+sms_user=zdwx
+server_name=139.68cwd.cn
+server_lang=gb2312
+http_port=
+server_domain=boease.com.cn
+login_bg=
+access_token=
+sms_number=10690
+tomcatjvm=001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020
+sms_comid=453

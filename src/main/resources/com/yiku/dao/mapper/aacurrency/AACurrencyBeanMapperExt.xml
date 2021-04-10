@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+
+    <resultMap id="queryCurrencyItem" type="com.yiku.common.dto.expenseList.Currency">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryCurrency" resultMap="queryCurrencyItem">
+        select id, code, name
+        from AA_Currency
+        where disabled = 0
+        order by id asc
+    </select>
+</mapper>

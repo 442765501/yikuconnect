@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="apportionFlag" property="apportionflag" jdbcType="TINYINT"/>
+        <result column="depth" property="depth" jdbcType="TINYINT"/>
+        <result column="isEndNode" property="isendnode" jdbcType="TINYINT"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="inId" property="inid" jdbcType="NVARCHAR"/>
+        <result column="idparent" property="idparent" jdbcType="INTEGER"/>
+        <result column="dispatchMode" property="dispatchmode" jdbcType="INTEGER"/>
+        <result column="expenseType" property="expensetype" jdbcType="INTEGER"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+        <result column="taxRate" property="taxrate" jdbcType="INTEGER"/>
+        <result column="DeductRate" property="deductrate" jdbcType="INTEGER"/>
+        <result column="IsDeduct" property="isdeduct" jdbcType="TINYINT"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aaexentity.AAExpenseItemBean" extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , code, name, apportionFlag, depth, isEndNode, disabled, inId, idparent, dispatchMode,
+    expenseType, createdTime, taxRate, DeductRate, IsDeduct
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from AA_ExpenseItem
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from AA_ExpenseItem
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_ExpenseItem (code, name, apportionFlag,
+        depth, isEndNode, disabled,
+        inId, idparent, dispatchMode,
+        expenseType, createdTime, taxRate,
+        DeductRate, IsDeduct, ts
+        )
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{apportionflag,jdbcType=TINYINT},
+        #{depth,jdbcType=TINYINT}, #{isendnode,jdbcType=TINYINT}, #{disabled,jdbcType=TINYINT},
+        #{inid,jdbcType=NVARCHAR}, #{idparent,jdbcType=INTEGER}, #{dispatchmode,jdbcType=INTEGER},
+        #{expensetype,jdbcType=INTEGER}, #{createdtime,jdbcType=TIMESTAMP}, #{taxrate,jdbcType=INTEGER},
+        #{deductrate,jdbcType=INTEGER}, #{isdeduct,jdbcType=TINYINT}, #{ts,jdbcType=BINARY}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_ExpenseItem
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="apportionflag != null">
+                apportionFlag,
+            </if>
+            <if test="depth != null">
+                depth,
+            </if>
+            <if test="isendnode != null">
+                isEndNode,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="inid != null">
+                inId,
+            </if>
+            <if test="idparent != null">
+                idparent,
+            </if>
+            <if test="dispatchmode != null">
+                dispatchMode,
+            </if>
+            <if test="expensetype != null">
+                expenseType,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="taxrate != null">
+                taxRate,
+            </if>
+            <if test="deductrate != null">
+                DeductRate,
+            </if>
+            <if test="isdeduct != null">
+                IsDeduct,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="apportionflag != null">
+                #{apportionflag,jdbcType=TINYINT},
+            </if>
+            <if test="depth != null">
+                #{depth,jdbcType=TINYINT},
+            </if>
+            <if test="isendnode != null">
+                #{isendnode,jdbcType=TINYINT},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="inid != null">
+                #{inid,jdbcType=NVARCHAR},
+            </if>
+            <if test="idparent != null">
+                #{idparent,jdbcType=INTEGER},
+            </if>
+            <if test="dispatchmode != null">
+                #{dispatchmode,jdbcType=INTEGER},
+            </if>
+            <if test="expensetype != null">
+                #{expensetype,jdbcType=INTEGER},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="taxrate != null">
+                #{taxrate,jdbcType=INTEGER},
+            </if>
+            <if test="deductrate != null">
+                #{deductrate,jdbcType=INTEGER},
+            </if>
+            <if test="isdeduct != null">
+                #{isdeduct,jdbcType=TINYINT},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        update AA_ExpenseItem
+        <set>
+            <if test="code != null">
+                code = #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="apportionflag != null">
+                apportionFlag = #{apportionflag,jdbcType=TINYINT},
+            </if>
+            <if test="depth != null">
+                depth = #{depth,jdbcType=TINYINT},
+            </if>
+            <if test="isendnode != null">
+                isEndNode = #{isendnode,jdbcType=TINYINT},
+            </if>
+            <if test="disabled != null">
+                disabled = #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="inid != null">
+                inId = #{inid,jdbcType=NVARCHAR},
+            </if>
+            <if test="idparent != null">
+                idparent = #{idparent,jdbcType=INTEGER},
+            </if>
+            <if test="dispatchmode != null">
+                dispatchMode = #{dispatchmode,jdbcType=INTEGER},
+            </if>
+            <if test="expensetype != null">
+                expenseType = #{expensetype,jdbcType=INTEGER},
+            </if>
+            <if test="createdtime != null">
+                createdTime = #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="taxrate != null">
+                taxRate = #{taxrate,jdbcType=INTEGER},
+            </if>
+            <if test="deductrate != null">
+                DeductRate = #{deductrate,jdbcType=INTEGER},
+            </if>
+            <if test="isdeduct != null">
+                IsDeduct = #{isdeduct,jdbcType=TINYINT},
+            </if>
+            <if test="ts != null">
+                ts = #{ts,jdbcType=BINARY},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        update AA_ExpenseItem
+        set code          = #{code,jdbcType=NVARCHAR},
+            name          = #{name,jdbcType=NVARCHAR},
+            apportionFlag = #{apportionflag,jdbcType=TINYINT},
+            depth         = #{depth,jdbcType=TINYINT},
+            isEndNode     = #{isendnode,jdbcType=TINYINT},
+            disabled      = #{disabled,jdbcType=TINYINT},
+            inId          = #{inid,jdbcType=NVARCHAR},
+            idparent      = #{idparent,jdbcType=INTEGER},
+            dispatchMode  = #{dispatchmode,jdbcType=INTEGER},
+            expenseType   = #{expensetype,jdbcType=INTEGER},
+            createdTime   = #{createdtime,jdbcType=TIMESTAMP},
+            taxRate       = #{taxrate,jdbcType=INTEGER},
+            DeductRate    = #{deductrate,jdbcType=INTEGER},
+            IsDeduct      = #{isdeduct,jdbcType=TINYINT},
+            ts            = #{ts,jdbcType=BINARY}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        update AA_ExpenseItem
+        set code          = #{code,jdbcType=NVARCHAR},
+            name          = #{name,jdbcType=NVARCHAR},
+            apportionFlag = #{apportionflag,jdbcType=TINYINT},
+            depth         = #{depth,jdbcType=TINYINT},
+            isEndNode     = #{isendnode,jdbcType=TINYINT},
+            disabled      = #{disabled,jdbcType=TINYINT},
+            inId          = #{inid,jdbcType=NVARCHAR},
+            idparent      = #{idparent,jdbcType=INTEGER},
+            dispatchMode  = #{dispatchmode,jdbcType=INTEGER},
+            expenseType   = #{expensetype,jdbcType=INTEGER},
+            createdTime   = #{createdtime,jdbcType=TIMESTAMP},
+            taxRate       = #{taxrate,jdbcType=INTEGER},
+            DeductRate    = #{deductrate,jdbcType=INTEGER},
+            IsDeduct      = #{isdeduct,jdbcType=TINYINT}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        select
+        count(*)
+        from AA_ExpenseItem
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="apportionflag != null">
+                AND apportionFlag=#{apportionflag,jdbcType=TINYINT}
+            </if>
+            <if test="depth != null">
+                AND depth=#{depth,jdbcType=TINYINT}
+            </if>
+            <if test="isendnode != null">
+                AND isEndNode=#{isendnode,jdbcType=TINYINT}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="inid != null">
+                AND inId=#{inid,jdbcType=NVARCHAR}
+            </if>
+            <if test="idparent != null">
+                AND idparent=#{idparent,jdbcType=INTEGER}
+            </if>
+            <if test="dispatchmode != null">
+                AND dispatchMode=#{dispatchmode,jdbcType=INTEGER}
+            </if>
+            <if test="expensetype != null">
+                AND expenseType=#{expensetype,jdbcType=INTEGER}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="taxrate != null">
+                AND taxRate=#{taxrate,jdbcType=INTEGER}
+            </if>
+            <if test="deductrate != null">
+                AND DeductRate=#{deductrate,jdbcType=INTEGER}
+            </if>
+            <if test="isdeduct != null">
+                AND IsDeduct=#{isdeduct,jdbcType=TINYINT}
+            </if>
+        </where>
+    </select>
+    <select id="searchByEntity" resultMap="BaseResultMap"
+            parameterType="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_ExpenseItem
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="apportionflag != null">
+                AND apportionFlag=#{apportionflag,jdbcType=TINYINT}
+            </if>
+            <if test="depth != null">
+                AND depth=#{depth,jdbcType=TINYINT}
+            </if>
+            <if test="isendnode != null">
+                AND isEndNode=#{isendnode,jdbcType=TINYINT}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="inid != null">
+                AND inId=#{inid,jdbcType=NVARCHAR}
+            </if>
+            <if test="idparent != null">
+                AND idparent=#{idparent,jdbcType=INTEGER}
+            </if>
+            <if test="dispatchmode != null">
+                AND dispatchMode=#{dispatchmode,jdbcType=INTEGER}
+            </if>
+            <if test="expensetype != null">
+                AND expenseType=#{expensetype,jdbcType=INTEGER}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="taxrate != null">
+                AND taxRate=#{taxrate,jdbcType=INTEGER}
+            </if>
+            <if test="deductrate != null">
+                AND DeductRate=#{deductrate,jdbcType=INTEGER}
+            </if>
+            <if test="isdeduct != null">
+                AND IsDeduct=#{isdeduct,jdbcType=TINYINT}
+            </if>
+        </where>
+    </select>
+</mapper>

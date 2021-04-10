@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+  <resultMap id="BaseResultMap" type="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="NVARCHAR" />
+    <result column="origamount" property="origamount" jdbcType="DECIMAL" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="origTax" property="origtax" jdbcType="DECIMAL" />
+    <result column="tax" property="tax" jdbcType="DECIMAL" />
+    <result column="origTaxAmount" property="origtaxamount" jdbcType="DECIMAL" />
+    <result column="taxamount" property="taxamount" jdbcType="DECIMAL" />
+    <result column="origSettleAmount" property="origsettleamount" jdbcType="DECIMAL" />
+    <result column="settleAmount" property="settleamount" jdbcType="DECIMAL" />
+    <result column="taxRate" property="taxrate" jdbcType="DECIMAL" />
+    <result column="isApportion" property="isapportion" jdbcType="TINYINT" />
+    <result column="isTax" property="istax" jdbcType="TINYINT" />
+    <result column="ismodifyorigtax" property="ismodifyorigtax" jdbcType="TINYINT" />
+    <result column="priuserdefnvc1" property="priuserdefnvc1" jdbcType="NVARCHAR" />
+    <result column="priuserdefdecm1" property="priuserdefdecm1" jdbcType="DECIMAL" />
+    <result column="priuserdefnvc2" property="priuserdefnvc2" jdbcType="NVARCHAR" />
+    <result column="priuserdefdecm2" property="priuserdefdecm2" jdbcType="DECIMAL" />
+    <result column="priuserdefnvc3" property="priuserdefnvc3" jdbcType="NVARCHAR" />
+    <result column="priuserdefdecm3" property="priuserdefdecm3" jdbcType="DECIMAL" />
+    <result column="priuserdefnvc4" property="priuserdefnvc4" jdbcType="NVARCHAR" />
+    <result column="priuserdefdecm4" property="priuserdefdecm4" jdbcType="DECIMAL" />
+    <result column="pubuserdefnvc1" property="pubuserdefnvc1" jdbcType="NVARCHAR" />
+    <result column="pubuserdefdecm1" property="pubuserdefdecm1" jdbcType="DECIMAL" />
+    <result column="pubuserdefnvc2" property="pubuserdefnvc2" jdbcType="NVARCHAR" />
+    <result column="pubuserdefdecm2" property="pubuserdefdecm2" jdbcType="DECIMAL" />
+    <result column="pubuserdefnvc3" property="pubuserdefnvc3" jdbcType="NVARCHAR" />
+    <result column="pubuserdefdecm3" property="pubuserdefdecm3" jdbcType="DECIMAL" />
+    <result column="pubuserdefnvc4" property="pubuserdefnvc4" jdbcType="NVARCHAR" />
+    <result column="pubuserdefdecm4" property="pubuserdefdecm4" jdbcType="DECIMAL" />
+    <result column="expenseItemUse" property="expenseitemuse" jdbcType="NVARCHAR" />
+    <result column="idexpenseitem" property="idexpenseitem" jdbcType="INTEGER" />
+    <result column="idproject" property="idproject" jdbcType="INTEGER" />
+    <result column="idExpenseVoucherDTO" property="idexpensevoucherdto" jdbcType="INTEGER" />
+    <result column="saleOrderDetailId" property="saleorderdetailid" jdbcType="INTEGER" />
+    <result column="idexpenseallocationvouchertype" property="idexpenseallocationvouchertype" jdbcType="INTEGER" />
+    <result column="detailAccessory" property="detailaccessory" jdbcType="NVARCHAR" />
+    <result column="IsDeduct" property="isdeduct" jdbcType="TINYINT" />
+    <result column="DeductRate" property="deductrate" jdbcType="DECIMAL" />
+    <result column="OrigDeductAmount" property="origdeductamount" jdbcType="DECIMAL" />
+    <result column="DeductAmount" property="deductamount" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" extends="BaseResultMap" >
+    <result column="ts" property="ts" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, code, origamount, amount, origTax, tax, origTaxAmount, taxamount, origSettleAmount, 
+    settleAmount, taxRate, isApportion, isTax, ismodifyorigtax, priuserdefnvc1, priuserdefdecm1, 
+    priuserdefnvc2, priuserdefdecm2, priuserdefnvc3, priuserdefdecm3, priuserdefnvc4, 
+    priuserdefdecm4, pubuserdefnvc1, pubuserdefdecm1, pubuserdefnvc2, pubuserdefdecm2, 
+    pubuserdefnvc3, pubuserdefdecm3, pubuserdefnvc4, pubuserdefdecm4, expenseItemUse, 
+    idexpenseitem, idproject, idExpenseVoucherDTO, saleOrderDetailId, idexpenseallocationvouchertype, 
+    detailAccessory, IsDeduct, DeductRate, OrigDeductAmount, DeductAmount
+  </sql>
+  <sql id="Blob_Column_List" >
+    ts
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from CS_ExpenseVoucher_b
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from CS_ExpenseVoucher_b
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into CS_ExpenseVoucher_b (code, origamount, amount, 
+      origTax, tax, origTaxAmount, 
+      taxamount, origSettleAmount, settleAmount, 
+      taxRate, isApportion, isTax, 
+      ismodifyorigtax, priuserdefnvc1, priuserdefdecm1, 
+      priuserdefnvc2, priuserdefdecm2, priuserdefnvc3, 
+      priuserdefdecm3, priuserdefnvc4, priuserdefdecm4, 
+      pubuserdefnvc1, pubuserdefdecm1, pubuserdefnvc2, 
+      pubuserdefdecm2, pubuserdefnvc3, pubuserdefdecm3, 
+      pubuserdefnvc4, pubuserdefdecm4, expenseItemUse, 
+      idexpenseitem, idproject, idExpenseVoucherDTO, 
+      saleOrderDetailId, idexpenseallocationvouchertype, 
+      detailAccessory, IsDeduct, DeductRate, 
+      OrigDeductAmount, DeductAmount, ts
+      )
+    values (#{code,jdbcType=NVARCHAR}, #{origamount,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}, 
+      #{origtax,jdbcType=DECIMAL}, #{tax,jdbcType=DECIMAL}, #{origtaxamount,jdbcType=DECIMAL}, 
+      #{taxamount,jdbcType=DECIMAL}, #{origsettleamount,jdbcType=DECIMAL}, #{settleamount,jdbcType=DECIMAL}, 
+      #{taxrate,jdbcType=DECIMAL}, #{isapportion,jdbcType=TINYINT}, #{istax,jdbcType=TINYINT}, 
+      #{ismodifyorigtax,jdbcType=TINYINT}, #{priuserdefnvc1,jdbcType=NVARCHAR}, #{priuserdefdecm1,jdbcType=DECIMAL}, 
+      #{priuserdefnvc2,jdbcType=NVARCHAR}, #{priuserdefdecm2,jdbcType=DECIMAL}, #{priuserdefnvc3,jdbcType=NVARCHAR}, 
+      #{priuserdefdecm3,jdbcType=DECIMAL}, #{priuserdefnvc4,jdbcType=NVARCHAR}, #{priuserdefdecm4,jdbcType=DECIMAL}, 
+      #{pubuserdefnvc1,jdbcType=NVARCHAR}, #{pubuserdefdecm1,jdbcType=DECIMAL}, #{pubuserdefnvc2,jdbcType=NVARCHAR}, 
+      #{pubuserdefdecm2,jdbcType=DECIMAL}, #{pubuserdefnvc3,jdbcType=NVARCHAR}, #{pubuserdefdecm3,jdbcType=DECIMAL}, 
+      #{pubuserdefnvc4,jdbcType=NVARCHAR}, #{pubuserdefdecm4,jdbcType=DECIMAL}, #{expenseitemuse,jdbcType=NVARCHAR}, 
+      #{idexpenseitem,jdbcType=INTEGER}, #{idproject,jdbcType=INTEGER}, #{idexpensevoucherdto,jdbcType=INTEGER}, 
+      #{saleorderdetailid,jdbcType=INTEGER}, #{idexpenseallocationvouchertype,jdbcType=INTEGER}, 
+      #{detailaccessory,jdbcType=NVARCHAR}, #{isdeduct,jdbcType=TINYINT}, #{deductrate,jdbcType=DECIMAL}, 
+      #{origdeductamount,jdbcType=DECIMAL}, #{deductamount,jdbcType=DECIMAL}, #{ts,jdbcType=BINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into CS_ExpenseVoucher_b
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="origamount != null" >
+        origamount,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="origtax != null" >
+        origTax,
+      </if>
+      <if test="tax != null" >
+        tax,
+      </if>
+      <if test="origtaxamount != null" >
+        origTaxAmount,
+      </if>
+      <if test="taxamount != null" >
+        taxamount,
+      </if>
+      <if test="origsettleamount != null" >
+        origSettleAmount,
+      </if>
+      <if test="settleamount != null" >
+        settleAmount,
+      </if>
+      <if test="taxrate != null" >
+        taxRate,
+      </if>
+      <if test="isapportion != null" >
+        isApportion,
+      </if>
+      <if test="istax != null" >
+        isTax,
+      </if>
+      <if test="ismodifyorigtax != null" >
+        ismodifyorigtax,
+      </if>
+      <if test="priuserdefnvc1 != null" >
+        priuserdefnvc1,
+      </if>
+      <if test="priuserdefdecm1 != null" >
+        priuserdefdecm1,
+      </if>
+      <if test="priuserdefnvc2 != null" >
+        priuserdefnvc2,
+      </if>
+      <if test="priuserdefdecm2 != null" >
+        priuserdefdecm2,
+      </if>
+      <if test="priuserdefnvc3 != null" >
+        priuserdefnvc3,
+      </if>
+      <if test="priuserdefdecm3 != null" >
+        priuserdefdecm3,
+      </if>
+      <if test="priuserdefnvc4 != null" >
+        priuserdefnvc4,
+      </if>
+      <if test="priuserdefdecm4 != null" >
+        priuserdefdecm4,
+      </if>
+      <if test="pubuserdefnvc1 != null" >
+        pubuserdefnvc1,
+      </if>
+      <if test="pubuserdefdecm1 != null" >
+        pubuserdefdecm1,
+      </if>
+      <if test="pubuserdefnvc2 != null" >
+        pubuserdefnvc2,
+      </if>
+      <if test="pubuserdefdecm2 != null" >
+        pubuserdefdecm2,
+      </if>
+      <if test="pubuserdefnvc3 != null" >
+        pubuserdefnvc3,
+      </if>
+      <if test="pubuserdefdecm3 != null" >
+        pubuserdefdecm3,
+      </if>
+      <if test="pubuserdefnvc4 != null" >
+        pubuserdefnvc4,
+      </if>
+      <if test="pubuserdefdecm4 != null" >
+        pubuserdefdecm4,
+      </if>
+      <if test="expenseitemuse != null" >
+        expenseItemUse,
+      </if>
+      <if test="idexpenseitem != null" >
+        idexpenseitem,
+      </if>
+      <if test="idproject != null" >
+        idproject,
+      </if>
+      <if test="idexpensevoucherdto != null" >
+        idExpenseVoucherDTO,
+      </if>
+      <if test="saleorderdetailid != null" >
+        saleOrderDetailId,
+      </if>
+      <if test="idexpenseallocationvouchertype != null" >
+        idexpenseallocationvouchertype,
+      </if>
+      <if test="detailaccessory != null" >
+        detailAccessory,
+      </if>
+      <if test="isdeduct != null" >
+        IsDeduct,
+      </if>
+      <if test="deductrate != null" >
+        DeductRate,
+      </if>
+      <if test="origdeductamount != null" >
+        OrigDeductAmount,
+      </if>
+      <if test="deductamount != null" >
+        DeductAmount,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="origamount != null" >
+        #{origamount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="origtax != null" >
+        #{origtax,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null" >
+        #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="origtaxamount != null" >
+        #{origtaxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="taxamount != null" >
+        #{taxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="origsettleamount != null" >
+        #{origsettleamount,jdbcType=DECIMAL},
+      </if>
+      <if test="settleamount != null" >
+        #{settleamount,jdbcType=DECIMAL},
+      </if>
+      <if test="taxrate != null" >
+        #{taxrate,jdbcType=DECIMAL},
+      </if>
+      <if test="isapportion != null" >
+        #{isapportion,jdbcType=TINYINT},
+      </if>
+      <if test="istax != null" >
+        #{istax,jdbcType=TINYINT},
+      </if>
+      <if test="ismodifyorigtax != null" >
+        #{ismodifyorigtax,jdbcType=TINYINT},
+      </if>
+      <if test="priuserdefnvc1 != null" >
+        #{priuserdefnvc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm1 != null" >
+        #{priuserdefdecm1,jdbcType=DECIMAL},
+      </if>
+      <if test="priuserdefnvc2 != null" >
+        #{priuserdefnvc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm2 != null" >
+        #{priuserdefdecm2,jdbcType=DECIMAL},
+      </if>
+      <if test="priuserdefnvc3 != null" >
+        #{priuserdefnvc3,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm3 != null" >
+        #{priuserdefdecm3,jdbcType=DECIMAL},
+      </if>
+      <if test="priuserdefnvc4 != null" >
+        #{priuserdefnvc4,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm4 != null" >
+        #{priuserdefdecm4,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc1 != null" >
+        #{pubuserdefnvc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm1 != null" >
+        #{pubuserdefdecm1,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc2 != null" >
+        #{pubuserdefnvc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm2 != null" >
+        #{pubuserdefdecm2,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc3 != null" >
+        #{pubuserdefnvc3,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm3 != null" >
+        #{pubuserdefdecm3,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc4 != null" >
+        #{pubuserdefnvc4,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm4 != null" >
+        #{pubuserdefdecm4,jdbcType=DECIMAL},
+      </if>
+      <if test="expenseitemuse != null" >
+        #{expenseitemuse,jdbcType=NVARCHAR},
+      </if>
+      <if test="idexpenseitem != null" >
+        #{idexpenseitem,jdbcType=INTEGER},
+      </if>
+      <if test="idproject != null" >
+        #{idproject,jdbcType=INTEGER},
+      </if>
+      <if test="idexpensevoucherdto != null" >
+        #{idexpensevoucherdto,jdbcType=INTEGER},
+      </if>
+      <if test="saleorderdetailid != null" >
+        #{saleorderdetailid,jdbcType=INTEGER},
+      </if>
+      <if test="idexpenseallocationvouchertype != null" >
+        #{idexpenseallocationvouchertype,jdbcType=INTEGER},
+      </if>
+      <if test="detailaccessory != null" >
+        #{detailaccessory,jdbcType=NVARCHAR},
+      </if>
+      <if test="isdeduct != null" >
+        #{isdeduct,jdbcType=TINYINT},
+      </if>
+      <if test="deductrate != null" >
+        #{deductrate,jdbcType=DECIMAL},
+      </if>
+      <if test="origdeductamount != null" >
+        #{origdeductamount,jdbcType=DECIMAL},
+      </if>
+      <if test="deductamount != null" >
+        #{deductamount,jdbcType=DECIMAL},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    update CS_ExpenseVoucher_b
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="origamount != null" >
+        origamount = #{origamount,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="origtax != null" >
+        origTax = #{origtax,jdbcType=DECIMAL},
+      </if>
+      <if test="tax != null" >
+        tax = #{tax,jdbcType=DECIMAL},
+      </if>
+      <if test="origtaxamount != null" >
+        origTaxAmount = #{origtaxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="taxamount != null" >
+        taxamount = #{taxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="origsettleamount != null" >
+        origSettleAmount = #{origsettleamount,jdbcType=DECIMAL},
+      </if>
+      <if test="settleamount != null" >
+        settleAmount = #{settleamount,jdbcType=DECIMAL},
+      </if>
+      <if test="taxrate != null" >
+        taxRate = #{taxrate,jdbcType=DECIMAL},
+      </if>
+      <if test="isapportion != null" >
+        isApportion = #{isapportion,jdbcType=TINYINT},
+      </if>
+      <if test="istax != null" >
+        isTax = #{istax,jdbcType=TINYINT},
+      </if>
+      <if test="ismodifyorigtax != null" >
+        ismodifyorigtax = #{ismodifyorigtax,jdbcType=TINYINT},
+      </if>
+      <if test="priuserdefnvc1 != null" >
+        priuserdefnvc1 = #{priuserdefnvc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm1 != null" >
+        priuserdefdecm1 = #{priuserdefdecm1,jdbcType=DECIMAL},
+      </if>
+      <if test="priuserdefnvc2 != null" >
+        priuserdefnvc2 = #{priuserdefnvc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm2 != null" >
+        priuserdefdecm2 = #{priuserdefdecm2,jdbcType=DECIMAL},
+      </if>
+      <if test="priuserdefnvc3 != null" >
+        priuserdefnvc3 = #{priuserdefnvc3,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm3 != null" >
+        priuserdefdecm3 = #{priuserdefdecm3,jdbcType=DECIMAL},
+      </if>
+      <if test="priuserdefnvc4 != null" >
+        priuserdefnvc4 = #{priuserdefnvc4,jdbcType=NVARCHAR},
+      </if>
+      <if test="priuserdefdecm4 != null" >
+        priuserdefdecm4 = #{priuserdefdecm4,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc1 != null" >
+        pubuserdefnvc1 = #{pubuserdefnvc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm1 != null" >
+        pubuserdefdecm1 = #{pubuserdefdecm1,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc2 != null" >
+        pubuserdefnvc2 = #{pubuserdefnvc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm2 != null" >
+        pubuserdefdecm2 = #{pubuserdefdecm2,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc3 != null" >
+        pubuserdefnvc3 = #{pubuserdefnvc3,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm3 != null" >
+        pubuserdefdecm3 = #{pubuserdefdecm3,jdbcType=DECIMAL},
+      </if>
+      <if test="pubuserdefnvc4 != null" >
+        pubuserdefnvc4 = #{pubuserdefnvc4,jdbcType=NVARCHAR},
+      </if>
+      <if test="pubuserdefdecm4 != null" >
+        pubuserdefdecm4 = #{pubuserdefdecm4,jdbcType=DECIMAL},
+      </if>
+      <if test="expenseitemuse != null" >
+        expenseItemUse = #{expenseitemuse,jdbcType=NVARCHAR},
+      </if>
+      <if test="idexpenseitem != null" >
+        idexpenseitem = #{idexpenseitem,jdbcType=INTEGER},
+      </if>
+      <if test="idproject != null" >
+        idproject = #{idproject,jdbcType=INTEGER},
+      </if>
+      <if test="idexpensevoucherdto != null" >
+        idExpenseVoucherDTO = #{idexpensevoucherdto,jdbcType=INTEGER},
+      </if>
+      <if test="saleorderdetailid != null" >
+        saleOrderDetailId = #{saleorderdetailid,jdbcType=INTEGER},
+      </if>
+      <if test="idexpenseallocationvouchertype != null" >
+        idexpenseallocationvouchertype = #{idexpenseallocationvouchertype,jdbcType=INTEGER},
+      </if>
+      <if test="detailaccessory != null" >
+        detailAccessory = #{detailaccessory,jdbcType=NVARCHAR},
+      </if>
+      <if test="isdeduct != null" >
+        IsDeduct = #{isdeduct,jdbcType=TINYINT},
+      </if>
+      <if test="deductrate != null" >
+        DeductRate = #{deductrate,jdbcType=DECIMAL},
+      </if>
+      <if test="origdeductamount != null" >
+        OrigDeductAmount = #{origdeductamount,jdbcType=DECIMAL},
+      </if>
+      <if test="deductamount != null" >
+        DeductAmount = #{deductamount,jdbcType=DECIMAL},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=BINARY},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    update CS_ExpenseVoucher_b
+    set code = #{code,jdbcType=NVARCHAR},
+      origamount = #{origamount,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      origTax = #{origtax,jdbcType=DECIMAL},
+      tax = #{tax,jdbcType=DECIMAL},
+      origTaxAmount = #{origtaxamount,jdbcType=DECIMAL},
+      taxamount = #{taxamount,jdbcType=DECIMAL},
+      origSettleAmount = #{origsettleamount,jdbcType=DECIMAL},
+      settleAmount = #{settleamount,jdbcType=DECIMAL},
+      taxRate = #{taxrate,jdbcType=DECIMAL},
+      isApportion = #{isapportion,jdbcType=TINYINT},
+      isTax = #{istax,jdbcType=TINYINT},
+      ismodifyorigtax = #{ismodifyorigtax,jdbcType=TINYINT},
+      priuserdefnvc1 = #{priuserdefnvc1,jdbcType=NVARCHAR},
+      priuserdefdecm1 = #{priuserdefdecm1,jdbcType=DECIMAL},
+      priuserdefnvc2 = #{priuserdefnvc2,jdbcType=NVARCHAR},
+      priuserdefdecm2 = #{priuserdefdecm2,jdbcType=DECIMAL},
+      priuserdefnvc3 = #{priuserdefnvc3,jdbcType=NVARCHAR},
+      priuserdefdecm3 = #{priuserdefdecm3,jdbcType=DECIMAL},
+      priuserdefnvc4 = #{priuserdefnvc4,jdbcType=NVARCHAR},
+      priuserdefdecm4 = #{priuserdefdecm4,jdbcType=DECIMAL},
+      pubuserdefnvc1 = #{pubuserdefnvc1,jdbcType=NVARCHAR},
+      pubuserdefdecm1 = #{pubuserdefdecm1,jdbcType=DECIMAL},
+      pubuserdefnvc2 = #{pubuserdefnvc2,jdbcType=NVARCHAR},
+      pubuserdefdecm2 = #{pubuserdefdecm2,jdbcType=DECIMAL},
+      pubuserdefnvc3 = #{pubuserdefnvc3,jdbcType=NVARCHAR},
+      pubuserdefdecm3 = #{pubuserdefdecm3,jdbcType=DECIMAL},
+      pubuserdefnvc4 = #{pubuserdefnvc4,jdbcType=NVARCHAR},
+      pubuserdefdecm4 = #{pubuserdefdecm4,jdbcType=DECIMAL},
+      expenseItemUse = #{expenseitemuse,jdbcType=NVARCHAR},
+      idexpenseitem = #{idexpenseitem,jdbcType=INTEGER},
+      idproject = #{idproject,jdbcType=INTEGER},
+      idExpenseVoucherDTO = #{idexpensevoucherdto,jdbcType=INTEGER},
+      saleOrderDetailId = #{saleorderdetailid,jdbcType=INTEGER},
+      idexpenseallocationvouchertype = #{idexpenseallocationvouchertype,jdbcType=INTEGER},
+      detailAccessory = #{detailaccessory,jdbcType=NVARCHAR},
+      IsDeduct = #{isdeduct,jdbcType=TINYINT},
+      DeductRate = #{deductrate,jdbcType=DECIMAL},
+      OrigDeductAmount = #{origdeductamount,jdbcType=DECIMAL},
+      DeductAmount = #{deductamount,jdbcType=DECIMAL},
+      ts = #{ts,jdbcType=BINARY}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    update CS_ExpenseVoucher_b
+    set code = #{code,jdbcType=NVARCHAR},
+      origamount = #{origamount,jdbcType=DECIMAL},
+      amount = #{amount,jdbcType=DECIMAL},
+      origTax = #{origtax,jdbcType=DECIMAL},
+      tax = #{tax,jdbcType=DECIMAL},
+      origTaxAmount = #{origtaxamount,jdbcType=DECIMAL},
+      taxamount = #{taxamount,jdbcType=DECIMAL},
+      origSettleAmount = #{origsettleamount,jdbcType=DECIMAL},
+      settleAmount = #{settleamount,jdbcType=DECIMAL},
+      taxRate = #{taxrate,jdbcType=DECIMAL},
+      isApportion = #{isapportion,jdbcType=TINYINT},
+      isTax = #{istax,jdbcType=TINYINT},
+      ismodifyorigtax = #{ismodifyorigtax,jdbcType=TINYINT},
+      priuserdefnvc1 = #{priuserdefnvc1,jdbcType=NVARCHAR},
+      priuserdefdecm1 = #{priuserdefdecm1,jdbcType=DECIMAL},
+      priuserdefnvc2 = #{priuserdefnvc2,jdbcType=NVARCHAR},
+      priuserdefdecm2 = #{priuserdefdecm2,jdbcType=DECIMAL},
+      priuserdefnvc3 = #{priuserdefnvc3,jdbcType=NVARCHAR},
+      priuserdefdecm3 = #{priuserdefdecm3,jdbcType=DECIMAL},
+      priuserdefnvc4 = #{priuserdefnvc4,jdbcType=NVARCHAR},
+      priuserdefdecm4 = #{priuserdefdecm4,jdbcType=DECIMAL},
+      pubuserdefnvc1 = #{pubuserdefnvc1,jdbcType=NVARCHAR},
+      pubuserdefdecm1 = #{pubuserdefdecm1,jdbcType=DECIMAL},
+      pubuserdefnvc2 = #{pubuserdefnvc2,jdbcType=NVARCHAR},
+      pubuserdefdecm2 = #{pubuserdefdecm2,jdbcType=DECIMAL},
+      pubuserdefnvc3 = #{pubuserdefnvc3,jdbcType=NVARCHAR},
+      pubuserdefdecm3 = #{pubuserdefdecm3,jdbcType=DECIMAL},
+      pubuserdefnvc4 = #{pubuserdefnvc4,jdbcType=NVARCHAR},
+      pubuserdefdecm4 = #{pubuserdefdecm4,jdbcType=DECIMAL},
+      expenseItemUse = #{expenseitemuse,jdbcType=NVARCHAR},
+      idexpenseitem = #{idexpenseitem,jdbcType=INTEGER},
+      idproject = #{idproject,jdbcType=INTEGER},
+      idExpenseVoucherDTO = #{idexpensevoucherdto,jdbcType=INTEGER},
+      saleOrderDetailId = #{saleorderdetailid,jdbcType=INTEGER},
+      idexpenseallocationvouchertype = #{idexpenseallocationvouchertype,jdbcType=INTEGER},
+      detailAccessory = #{detailaccessory,jdbcType=NVARCHAR},
+      IsDeduct = #{isdeduct,jdbcType=TINYINT},
+      DeductRate = #{deductrate,jdbcType=DECIMAL},
+      OrigDeductAmount = #{origdeductamount,jdbcType=DECIMAL},
+      DeductAmount = #{deductamount,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="searchByEntityCount" resultType="java.lang.Integer" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    select
+    count(*)
+    from CS_ExpenseVoucher_b
+    <where>
+     <if test="code != null">
+      code=#{code,jdbcType=NVARCHAR}
+     </if>
+     <if test="origamount != null">
+      AND origamount=#{origamount,jdbcType=DECIMAL}
+     </if>
+     <if test="amount != null">
+      AND amount=#{amount,jdbcType=DECIMAL}
+     </if>
+     <if test="origtax != null">
+      AND origTax=#{origtax,jdbcType=DECIMAL}
+     </if>
+     <if test="tax != null">
+      AND tax=#{tax,jdbcType=DECIMAL}
+     </if>
+     <if test="origtaxamount != null">
+      AND origTaxAmount=#{origtaxamount,jdbcType=DECIMAL}
+     </if>
+     <if test="taxamount != null">
+      AND taxamount=#{taxamount,jdbcType=DECIMAL}
+     </if>
+     <if test="origsettleamount != null">
+      AND origSettleAmount=#{origsettleamount,jdbcType=DECIMAL}
+     </if>
+     <if test="settleamount != null">
+      AND settleAmount=#{settleamount,jdbcType=DECIMAL}
+     </if>
+     <if test="taxrate != null">
+      AND taxRate=#{taxrate,jdbcType=DECIMAL}
+     </if>
+     <if test="isapportion != null">
+      AND isApportion=#{isapportion,jdbcType=TINYINT}
+     </if>
+     <if test="istax != null">
+      AND isTax=#{istax,jdbcType=TINYINT}
+     </if>
+     <if test="ismodifyorigtax != null">
+      AND ismodifyorigtax=#{ismodifyorigtax,jdbcType=TINYINT}
+     </if>
+     <if test="priuserdefnvc1 != null">
+      AND priuserdefnvc1=#{priuserdefnvc1,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm1 != null">
+      AND priuserdefdecm1=#{priuserdefdecm1,jdbcType=DECIMAL}
+     </if>
+     <if test="priuserdefnvc2 != null">
+      AND priuserdefnvc2=#{priuserdefnvc2,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm2 != null">
+      AND priuserdefdecm2=#{priuserdefdecm2,jdbcType=DECIMAL}
+     </if>
+     <if test="priuserdefnvc3 != null">
+      AND priuserdefnvc3=#{priuserdefnvc3,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm3 != null">
+      AND priuserdefdecm3=#{priuserdefdecm3,jdbcType=DECIMAL}
+     </if>
+     <if test="priuserdefnvc4 != null">
+      AND priuserdefnvc4=#{priuserdefnvc4,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm4 != null">
+      AND priuserdefdecm4=#{priuserdefdecm4,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc1 != null">
+      AND pubuserdefnvc1=#{pubuserdefnvc1,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm1 != null">
+      AND pubuserdefdecm1=#{pubuserdefdecm1,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc2 != null">
+      AND pubuserdefnvc2=#{pubuserdefnvc2,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm2 != null">
+      AND pubuserdefdecm2=#{pubuserdefdecm2,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc3 != null">
+      AND pubuserdefnvc3=#{pubuserdefnvc3,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm3 != null">
+      AND pubuserdefdecm3=#{pubuserdefdecm3,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc4 != null">
+      AND pubuserdefnvc4=#{pubuserdefnvc4,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm4 != null">
+      AND pubuserdefdecm4=#{pubuserdefdecm4,jdbcType=DECIMAL}
+     </if>
+     <if test="expenseitemuse != null">
+      AND expenseItemUse=#{expenseitemuse,jdbcType=NVARCHAR}
+     </if>
+     <if test="idexpenseitem != null">
+      AND idexpenseitem=#{idexpenseitem,jdbcType=INTEGER}
+     </if>
+     <if test="idproject != null">
+      AND idproject=#{idproject,jdbcType=INTEGER}
+     </if>
+     <if test="idexpensevoucherdto != null">
+      AND idExpenseVoucherDTO=#{idexpensevoucherdto,jdbcType=INTEGER}
+     </if>
+     <if test="saleorderdetailid != null">
+      AND saleOrderDetailId=#{saleorderdetailid,jdbcType=INTEGER}
+     </if>
+     <if test="idexpenseallocationvouchertype != null">
+      AND idexpenseallocationvouchertype=#{idexpenseallocationvouchertype,jdbcType=INTEGER}
+     </if>
+     <if test="detailaccessory != null">
+      AND detailAccessory=#{detailaccessory,jdbcType=NVARCHAR}
+     </if>
+     <if test="isdeduct != null">
+      AND IsDeduct=#{isdeduct,jdbcType=TINYINT}
+     </if>
+     <if test="deductrate != null">
+      AND DeductRate=#{deductrate,jdbcType=DECIMAL}
+     </if>
+     <if test="origdeductamount != null">
+      AND OrigDeductAmount=#{origdeductamount,jdbcType=DECIMAL}
+     </if>
+     <if test="deductamount != null">
+      AND DeductAmount=#{deductamount,jdbcType=DECIMAL}
+     </if>
+    </where>
+  </select>
+  <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.csentity.CSExpenseVoucherBBean" >
+    select
+    <include refid="Base_Column_List"/>
+    from CS_ExpenseVoucher_b
+    <where>
+     <if test="code != null">
+      code=#{code,jdbcType=NVARCHAR}
+     </if>
+     <if test="origamount != null">
+      AND origamount=#{origamount,jdbcType=DECIMAL}
+     </if>
+     <if test="amount != null">
+      AND amount=#{amount,jdbcType=DECIMAL}
+     </if>
+     <if test="origtax != null">
+      AND origTax=#{origtax,jdbcType=DECIMAL}
+     </if>
+     <if test="tax != null">
+      AND tax=#{tax,jdbcType=DECIMAL}
+     </if>
+     <if test="origtaxamount != null">
+      AND origTaxAmount=#{origtaxamount,jdbcType=DECIMAL}
+     </if>
+     <if test="taxamount != null">
+      AND taxamount=#{taxamount,jdbcType=DECIMAL}
+     </if>
+     <if test="origsettleamount != null">
+      AND origSettleAmount=#{origsettleamount,jdbcType=DECIMAL}
+     </if>
+     <if test="settleamount != null">
+      AND settleAmount=#{settleamount,jdbcType=DECIMAL}
+     </if>
+     <if test="taxrate != null">
+      AND taxRate=#{taxrate,jdbcType=DECIMAL}
+     </if>
+     <if test="isapportion != null">
+      AND isApportion=#{isapportion,jdbcType=TINYINT}
+     </if>
+     <if test="istax != null">
+      AND isTax=#{istax,jdbcType=TINYINT}
+     </if>
+     <if test="ismodifyorigtax != null">
+      AND ismodifyorigtax=#{ismodifyorigtax,jdbcType=TINYINT}
+     </if>
+     <if test="priuserdefnvc1 != null">
+      AND priuserdefnvc1=#{priuserdefnvc1,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm1 != null">
+      AND priuserdefdecm1=#{priuserdefdecm1,jdbcType=DECIMAL}
+     </if>
+     <if test="priuserdefnvc2 != null">
+      AND priuserdefnvc2=#{priuserdefnvc2,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm2 != null">
+      AND priuserdefdecm2=#{priuserdefdecm2,jdbcType=DECIMAL}
+     </if>
+     <if test="priuserdefnvc3 != null">
+      AND priuserdefnvc3=#{priuserdefnvc3,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm3 != null">
+      AND priuserdefdecm3=#{priuserdefdecm3,jdbcType=DECIMAL}
+     </if>
+     <if test="priuserdefnvc4 != null">
+      AND priuserdefnvc4=#{priuserdefnvc4,jdbcType=NVARCHAR}
+     </if>
+     <if test="priuserdefdecm4 != null">
+      AND priuserdefdecm4=#{priuserdefdecm4,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc1 != null">
+      AND pubuserdefnvc1=#{pubuserdefnvc1,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm1 != null">
+      AND pubuserdefdecm1=#{pubuserdefdecm1,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc2 != null">
+      AND pubuserdefnvc2=#{pubuserdefnvc2,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm2 != null">
+      AND pubuserdefdecm2=#{pubuserdefdecm2,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc3 != null">
+      AND pubuserdefnvc3=#{pubuserdefnvc3,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm3 != null">
+      AND pubuserdefdecm3=#{pubuserdefdecm3,jdbcType=DECIMAL}
+     </if>
+     <if test="pubuserdefnvc4 != null">
+      AND pubuserdefnvc4=#{pubuserdefnvc4,jdbcType=NVARCHAR}
+     </if>
+     <if test="pubuserdefdecm4 != null">
+      AND pubuserdefdecm4=#{pubuserdefdecm4,jdbcType=DECIMAL}
+     </if>
+     <if test="expenseitemuse != null">
+      AND expenseItemUse=#{expenseitemuse,jdbcType=NVARCHAR}
+     </if>
+     <if test="idexpenseitem != null">
+      AND idexpenseitem=#{idexpenseitem,jdbcType=INTEGER}
+     </if>
+     <if test="idproject != null">
+      AND idproject=#{idproject,jdbcType=INTEGER}
+     </if>
+     <if test="idexpensevoucherdto != null">
+      AND idExpenseVoucherDTO=#{idexpensevoucherdto,jdbcType=INTEGER}
+     </if>
+     <if test="saleorderdetailid != null">
+      AND saleOrderDetailId=#{saleorderdetailid,jdbcType=INTEGER}
+     </if>
+     <if test="idexpenseallocationvouchertype != null">
+      AND idexpenseallocationvouchertype=#{idexpenseallocationvouchertype,jdbcType=INTEGER}
+     </if>
+     <if test="detailaccessory != null">
+      AND detailAccessory=#{detailaccessory,jdbcType=NVARCHAR}
+     </if>
+     <if test="isdeduct != null">
+      AND IsDeduct=#{isdeduct,jdbcType=TINYINT}
+     </if>
+     <if test="deductrate != null">
+      AND DeductRate=#{deductrate,jdbcType=DECIMAL}
+     </if>
+     <if test="origdeductamount != null">
+      AND OrigDeductAmount=#{origdeductamount,jdbcType=DECIMAL}
+     </if>
+     <if test="deductamount != null">
+      AND DeductAmount=#{deductamount,jdbcType=DECIMAL}
+     </if>
+    </where>
+  </select>
+</mapper>

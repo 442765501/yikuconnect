@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="updatedBy" property="updatedby" jdbcType="NVARCHAR"/>
+        <result column="isSystem" property="issystem" jdbcType="TINYINT"/>
+        <result column="ExpressionName" property="expressionname" jdbcType="NVARCHAR"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="idrdStyleIn" property="idrdstylein" jdbcType="INTEGER"/>
+        <result column="idrdStyleOut" property="idrdstyleout" jdbcType="INTEGER"/>
+        <result column="businessVoucher" property="businessvoucher" jdbcType="INTEGER"/>
+        <result column="madeDate" property="madedate" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aabusiType.AABusiTypeBean" extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        code
+        , name, disabled,
+      updatedBy, isSystem, ExpressionName,
+      idrdStyleIn, idrdStyleOut, businessVoucher,
+      madeDate, updated, createdTime
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from AA_BusiType
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_BusiType (code, name, disabled,
+        updatedBy, isSystem, ExpressionName,
+        idrdStyleIn, idrdStyleOut, businessVoucher,
+        madeDate, updated, createdTime,
+        ts)
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{disabled,jdbcType=TINYINT},
+        #{updatedby,jdbcType=NVARCHAR}, #{issystem,jdbcType=TINYINT}, #{expressionname,jdbcType=NVARCHAR},
+        #{idrdstylein,jdbcType=INTEGER}, #{idrdstyleout,jdbcType=INTEGER}, #{businessvoucher,jdbcType=INTEGER},
+        #{madedate,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{createdtime,jdbcType=TIMESTAMP},
+        #{ts,jdbcType=BINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_BusiType
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="updatedby != null">
+                updatedBy,
+            </if>
+            <if test="issystem != null">
+                isSystem,
+            </if>
+            <if test="expressionname != null">
+                ExpressionName,
+            </if>
+            <if test="idrdstylein != null">
+                idrdStyleIn,
+            </if>
+            <if test="idrdstyleout != null">
+                idrdStyleOut,
+            </if>
+            <if test="businessvoucher != null">
+                businessVoucher,
+            </if>
+            <if test="madedate != null">
+                madeDate,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="updatedby != null">
+                #{updatedby,jdbcType=NVARCHAR},
+            </if>
+            <if test="issystem != null">
+                #{issystem,jdbcType=TINYINT},
+            </if>
+            <if test="expressionname != null">
+                #{expressionname,jdbcType=NVARCHAR},
+            </if>
+            <if test="idrdstylein != null">
+                #{idrdstylein,jdbcType=INTEGER},
+            </if>
+            <if test="idrdstyleout != null">
+                #{idrdstyleout,jdbcType=INTEGER},
+            </if>
+            <if test="businessvoucher != null">
+                #{businessvoucher,jdbcType=INTEGER},
+            </if>
+            <if test="madedate != null">
+                #{madedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                #{updated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+        select
+        count(*)
+        from AA_BusiType
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="issystem != null">
+                AND isSystem=#{issystem,jdbcType=TINYINT}
+            </if>
+            <if test="expressionname != null">
+                AND ExpressionName=#{expressionname,jdbcType=NVARCHAR}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idrdstylein != null">
+                AND idrdStyleIn=#{idrdstylein,jdbcType=INTEGER}
+            </if>
+            <if test="idrdstyleout != null">
+                AND idrdStyleOut=#{idrdstyleout,jdbcType=INTEGER}
+            </if>
+            <if test="businessvoucher != null">
+                AND businessVoucher=#{businessvoucher,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_BusiType
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="issystem != null">
+                AND isSystem=#{issystem,jdbcType=TINYINT}
+            </if>
+            <if test="expressionname != null">
+                AND ExpressionName=#{expressionname,jdbcType=NVARCHAR}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idrdstylein != null">
+                AND idrdStyleIn=#{idrdstylein,jdbcType=INTEGER}
+            </if>
+            <if test="idrdstyleout != null">
+                AND idrdStyleOut=#{idrdstyleout,jdbcType=INTEGER}
+            </if>
+            <if test="businessvoucher != null">
+                AND businessVoucher=#{businessvoucher,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>

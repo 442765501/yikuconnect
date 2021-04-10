@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aapartner.AAPartnerBean">
+
+    <resultMap id="queryPartner" type="com.yiku.common.dto.expenseList.Partner">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="customName" property="customName" jdbcType="VARCHAR"/>
+        <result column="customId" property="customId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="getPartner" resultMap="queryPartner" parameterType="java.lang.String">
+        SELECT aa.name,
+               aa.code,
+               aa.id,
+               eap.Name as customName,
+               eap.id   as customId
+        FROM AA_Partner aa
+                 LEFT JOIN AA_PartnerClass aap ON aa.idpartnerclass = aap.id
+                 LEFT JOIN eap_EnumItem eap ON eap.ID = aa.partnerType
+                 LEFT JOIN eap_Enum eape ON eap.idEnum = eape.id
+            AND eape.Name = 'PartnerType'
+            AND aa.disabled = 0
+            AND aap.disabled = 0
+            AND eap.IsDeleted = 0
+        ORDER BY aa.id ASC
+    </select>
+
+    <select id="getPartnerByCode" resultMap="queryPartner" parameterType="java.lang.String">
+        SELECT aa.name,
+               aa.code,
+               aa.id,
+               eap.Name as customName,
+               eap.id   as customId
+        FROM AA_Partner aa
+                 LEFT JOIN AA_PartnerClass aap ON aa.idpartnerclass = aap.id
+                 LEFT JOIN eap_EnumItem eap ON eap.ID = aa.partnerType
+                 LEFT JOIN eap_Enum eape ON eap.idEnum = eape.id
+        where aa.code = #{code}
+          AND eape.Name = 'PartnerType'
+          AND aa.disabled = 0
+          AND aap.disabled = 0
+          AND eap.IsDeleted = 0
+        ORDER BY aa.id ASC
+    </select>
+
+</mapper>

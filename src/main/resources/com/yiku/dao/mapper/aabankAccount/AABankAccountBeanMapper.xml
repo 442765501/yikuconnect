@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aabankAccount.AABankAccountBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aabankAccount.AABankAccountBean">
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="bankNo" property="bankno" jdbcType="NVARCHAR"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="updatedBy" property="updatedby" jdbcType="NVARCHAR"/>
+        <result column="isusingdeficitcontrol" property="isusingdeficitcontrol" jdbcType="TINYINT"/>
+        <result column="isusingbankcheck" property="isusingbankcheck" jdbcType="TINYINT"/>
+        <result column="NewBalance_Abandon" property="newbalanceAbandon" jdbcType="DECIMAL"/>
+        <result column="VirtualPay" property="virtualpay" jdbcType="TINYINT"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="idcurrency" property="idcurrency" jdbcType="INTEGER"/>
+        <result column="iddepartment" property="iddepartment" jdbcType="INTEGER"/>
+        <result column="idMarketingOrgan" property="idmarketingorgan" jdbcType="INTEGER"/>
+        <result column="balancedirection" property="balancedirection" jdbcType="INTEGER"/>
+        <result column="bankName" property="bankname" jdbcType="INTEGER"/>
+        <result column="bankNoType" property="banknotype" jdbcType="INTEGER"/>
+        <result column="madeDate" property="madedate" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="dateofusingbankcheck" property="dateofusingbankcheck" jdbcType="TIMESTAMP"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+        <result column="WeixinAppID" property="weixinappid" jdbcType="NVARCHAR"/>
+        <result column="WeixinPayKey" property="weixinpaykey" jdbcType="NVARCHAR"/>
+        <result column="AlipayServiceNo" property="alipayserviceno" jdbcType="NVARCHAR"/>
+        <result column="AlipayAppID" property="alipayappid" jdbcType="NVARCHAR"/>
+        <result column="WeiXinMerchantNo" property="weixinmerchantno" jdbcType="NVARCHAR"/>
+        <result column="WeiXinServiceNo" property="weixinserviceno" jdbcType="NVARCHAR"/>
+        <result column="WeiXinServiceAPPID" property="weixinserviceappid" jdbcType="NVARCHAR"/>
+        <result column="AlipayPublicKey" property="alipaypublickey" jdbcType="NVARCHAR"/>
+        <result column="MerchantPublicKey" property="merchantpublickey" jdbcType="NVARCHAR"/>
+        <result column="MerchantPrivateKey" property="merchantprivatekey" jdbcType="NVARCHAR"/>
+        <result column="EncryptionMethod" property="encryptionmethod" jdbcType="INTEGER"/>
+        <result column="imageFile" property="imagefile" jdbcType="VARCHAR"/>
+        <result column="AlipayServiceAppID" property="alipayserviceappid" jdbcType="NVARCHAR"/>
+        <result column="AccountCode" property="accountcode" jdbcType="NVARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aabankAccount.AABankAccountBean"
+               extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        code
+        , name, bankNo,
+      disabled, updatedBy, isusingdeficitcontrol,
+      isusingbankcheck, NewBalance_Abandon, VirtualPay,
+      idcurrency, iddepartment, idMarketingOrgan,
+      balancedirection, bankName, bankNoType,
+      madeDate, updated, dateofusingbankcheck,
+      createdTime, WeixinAppID, WeixinPayKey,
+      AlipayServiceNo, AlipayAppID, WeiXinMerchantNo,
+      WeiXinServiceNo, WeiXinServiceAPPID,
+      AlipayPublicKey, MerchantPublicKey, MerchantPrivateKey,
+      EncryptionMethod, imageFile, AlipayServiceAppID,
+      AccountCode
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List" />
+        from AA_BankAccount
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="insert" parameterType="com.yiku.dao.entity.aabankAccount.AABankAccountBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_BankAccount (code, name, bankNo,
+        disabled, updatedBy, isusingdeficitcontrol,
+        isusingbankcheck, NewBalance_Abandon, VirtualPay,
+        idcurrency, iddepartment, idMarketingOrgan,
+        balancedirection, bankName, bankNoType,
+        madeDate, updated, dateofusingbankcheck,
+        createdTime, WeixinAppID, WeixinPayKey,
+        AlipayServiceNo, AlipayAppID, WeiXinMerchantNo,
+        WeiXinServiceNo, WeiXinServiceAPPID,
+        AlipayPublicKey, MerchantPublicKey, MerchantPrivateKey,
+        EncryptionMethod, imageFile, AlipayServiceAppID,
+        AccountCode, ts)
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{bankno,jdbcType=NVARCHAR},
+        #{disabled,jdbcType=TINYINT}, #{updatedby,jdbcType=NVARCHAR}, #{isusingdeficitcontrol,jdbcType=TINYINT},
+        #{isusingbankcheck,jdbcType=TINYINT}, #{newbalanceAbandon,jdbcType=DECIMAL}, #{virtualpay,jdbcType=TINYINT},
+        #{idcurrency,jdbcType=INTEGER}, #{iddepartment,jdbcType=INTEGER}, #{idmarketingorgan,jdbcType=INTEGER},
+        #{balancedirection,jdbcType=INTEGER}, #{bankname,jdbcType=INTEGER}, #{banknotype,jdbcType=INTEGER},
+        #{madedate,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{dateofusingbankcheck,jdbcType=TIMESTAMP},
+        #{createdtime,jdbcType=TIMESTAMP}, #{weixinappid,jdbcType=NVARCHAR}, #{weixinpaykey,jdbcType=NVARCHAR},
+        #{alipayserviceno,jdbcType=NVARCHAR}, #{alipayappid,jdbcType=NVARCHAR}, #{weixinmerchantno,jdbcType=NVARCHAR},
+        #{weixinserviceno,jdbcType=NVARCHAR}, #{weixinserviceappid,jdbcType=NVARCHAR},
+        #{alipaypublickey,jdbcType=NVARCHAR}, #{merchantpublickey,jdbcType=NVARCHAR},
+        #{merchantprivatekey,jdbcType=NVARCHAR},
+        #{encryptionmethod,jdbcType=INTEGER}, #{imagefile,jdbcType=VARCHAR}, #{alipayserviceappid,jdbcType=NVARCHAR},
+        #{accountcode,jdbcType=NVARCHAR}, #{ts,jdbcType=BINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aabankAccount.AABankAccountBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_BankAccount
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="bankno != null">
+                bankNo,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="updatedby != null">
+                updatedBy,
+            </if>
+            <if test="isusingdeficitcontrol != null">
+                isusingdeficitcontrol,
+            </if>
+            <if test="isusingbankcheck != null">
+                isusingbankcheck,
+            </if>
+            <if test="newbalanceAbandon != null">
+                NewBalance_Abandon,
+            </if>
+            <if test="virtualpay != null">
+                VirtualPay,
+            </if>
+            <if test="idcurrency != null">
+                idcurrency,
+            </if>
+            <if test="iddepartment != null">
+                iddepartment,
+            </if>
+            <if test="idmarketingorgan != null">
+                idMarketingOrgan,
+            </if>
+            <if test="balancedirection != null">
+                balancedirection,
+            </if>
+            <if test="bankname != null">
+                bankName,
+            </if>
+            <if test="banknotype != null">
+                bankNoType,
+            </if>
+            <if test="madedate != null">
+                madeDate,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+            <if test="dateofusingbankcheck != null">
+                dateofusingbankcheck,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="weixinappid != null">
+                WeixinAppID,
+            </if>
+            <if test="weixinpaykey != null">
+                WeixinPayKey,
+            </if>
+            <if test="alipayserviceno != null">
+                AlipayServiceNo,
+            </if>
+            <if test="alipayappid != null">
+                AlipayAppID,
+            </if>
+            <if test="weixinmerchantno != null">
+                WeiXinMerchantNo,
+            </if>
+            <if test="weixinserviceno != null">
+                WeiXinServiceNo,
+            </if>
+            <if test="weixinserviceappid != null">
+                WeiXinServiceAPPID,
+            </if>
+            <if test="alipaypublickey != null">
+                AlipayPublicKey,
+            </if>
+            <if test="merchantpublickey != null">
+                MerchantPublicKey,
+            </if>
+            <if test="merchantprivatekey != null">
+                MerchantPrivateKey,
+            </if>
+            <if test="encryptionmethod != null">
+                EncryptionMethod,
+            </if>
+            <if test="imagefile != null">
+                imageFile,
+            </if>
+            <if test="alipayserviceappid != null">
+                AlipayServiceAppID,
+            </if>
+            <if test="accountcode != null">
+                AccountCode,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="bankno != null">
+                #{bankno,jdbcType=NVARCHAR},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="updatedby != null">
+                #{updatedby,jdbcType=NVARCHAR},
+            </if>
+            <if test="isusingdeficitcontrol != null">
+                #{isusingdeficitcontrol,jdbcType=TINYINT},
+            </if>
+            <if test="isusingbankcheck != null">
+                #{isusingbankcheck,jdbcType=TINYINT},
+            </if>
+            <if test="newbalanceAbandon != null">
+                #{newbalanceAbandon,jdbcType=DECIMAL},
+            </if>
+            <if test="virtualpay != null">
+                #{virtualpay,jdbcType=TINYINT},
+            </if>
+            <if test="idcurrency != null">
+                #{idcurrency,jdbcType=INTEGER},
+            </if>
+            <if test="iddepartment != null">
+                #{iddepartment,jdbcType=INTEGER},
+            </if>
+            <if test="idmarketingorgan != null">
+                #{idmarketingorgan,jdbcType=INTEGER},
+            </if>
+            <if test="balancedirection != null">
+                #{balancedirection,jdbcType=INTEGER},
+            </if>
+            <if test="bankname != null">
+                #{bankname,jdbcType=INTEGER},
+            </if>
+            <if test="banknotype != null">
+                #{banknotype,jdbcType=INTEGER},
+            </if>
+            <if test="madedate != null">
+                #{madedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                #{updated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateofusingbankcheck != null">
+                #{dateofusingbankcheck,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="weixinappid != null">
+                #{weixinappid,jdbcType=NVARCHAR},
+            </if>
+            <if test="weixinpaykey != null">
+                #{weixinpaykey,jdbcType=NVARCHAR},
+            </if>
+            <if test="alipayserviceno != null">
+                #{alipayserviceno,jdbcType=NVARCHAR},
+            </if>
+            <if test="alipayappid != null">
+                #{alipayappid,jdbcType=NVARCHAR},
+            </if>
+            <if test="weixinmerchantno != null">
+                #{weixinmerchantno,jdbcType=NVARCHAR},
+            </if>
+            <if test="weixinserviceno != null">
+                #{weixinserviceno,jdbcType=NVARCHAR},
+            </if>
+            <if test="weixinserviceappid != null">
+                #{weixinserviceappid,jdbcType=NVARCHAR},
+            </if>
+            <if test="alipaypublickey != null">
+                #{alipaypublickey,jdbcType=NVARCHAR},
+            </if>
+            <if test="merchantpublickey != null">
+                #{merchantpublickey,jdbcType=NVARCHAR},
+            </if>
+            <if test="merchantprivatekey != null">
+                #{merchantprivatekey,jdbcType=NVARCHAR},
+            </if>
+            <if test="encryptionmethod != null">
+                #{encryptionmethod,jdbcType=INTEGER},
+            </if>
+            <if test="imagefile != null">
+                #{imagefile,jdbcType=VARCHAR},
+            </if>
+            <if test="alipayserviceappid != null">
+                #{alipayserviceappid,jdbcType=NVARCHAR},
+            </if>
+            <if test="accountcode != null">
+                #{accountcode,jdbcType=NVARCHAR},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aabankAccount.AABankAccountBean">
+        select
+        count(*)
+        from AA_BankAccount
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="bankno != null">
+                AND bankNo=#{bankno,jdbcType=NVARCHAR}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="isusingdeficitcontrol != null">
+                AND isusingdeficitcontrol=#{isusingdeficitcontrol,jdbcType=TINYINT}
+            </if>
+            <if test="isusingbankcheck != null">
+                AND isusingbankcheck=#{isusingbankcheck,jdbcType=TINYINT}
+            </if>
+            <if test="newbalanceAbandon != null">
+                AND NewBalance_Abandon=#{newbalanceAbandon,jdbcType=DECIMAL}
+            </if>
+            <if test="virtualpay != null">
+                AND VirtualPay=#{virtualpay,jdbcType=TINYINT}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idcurrency != null">
+                AND idcurrency=#{idcurrency,jdbcType=INTEGER}
+            </if>
+            <if test="iddepartment != null">
+                AND iddepartment=#{iddepartment,jdbcType=INTEGER}
+            </if>
+            <if test="idmarketingorgan != null">
+                AND idMarketingOrgan=#{idmarketingorgan,jdbcType=INTEGER}
+            </if>
+            <if test="balancedirection != null">
+                AND balancedirection=#{balancedirection,jdbcType=INTEGER}
+            </if>
+            <if test="bankname != null">
+                AND bankName=#{bankname,jdbcType=INTEGER}
+            </if>
+            <if test="banknotype != null">
+                AND bankNoType=#{banknotype,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="dateofusingbankcheck != null">
+                AND dateofusingbankcheck=#{dateofusingbankcheck,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="weixinappid != null">
+                AND WeixinAppID=#{weixinappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinpaykey != null">
+                AND WeixinPayKey=#{weixinpaykey,jdbcType=NVARCHAR}
+            </if>
+            <if test="alipayserviceno != null">
+                AND AlipayServiceNo=#{alipayserviceno,jdbcType=NVARCHAR}
+            </if>
+            <if test="alipayappid != null">
+                AND AlipayAppID=#{alipayappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinmerchantno != null">
+                AND WeiXinMerchantNo=#{weixinmerchantno,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinserviceno != null">
+                AND WeiXinServiceNo=#{weixinserviceno,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinserviceappid != null">
+                AND WeiXinServiceAPPID=#{weixinserviceappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="alipaypublickey != null">
+                AND AlipayPublicKey=#{alipaypublickey,jdbcType=NVARCHAR}
+            </if>
+            <if test="merchantpublickey != null">
+                AND MerchantPublicKey=#{merchantpublickey,jdbcType=NVARCHAR}
+            </if>
+            <if test="merchantprivatekey != null">
+                AND MerchantPrivateKey=#{merchantprivatekey,jdbcType=NVARCHAR}
+            </if>
+            <if test="encryptionmethod != null">
+                AND EncryptionMethod=#{encryptionmethod,jdbcType=INTEGER}
+            </if>
+            <if test="imagefile != null">
+                AND imageFile=#{imagefile,jdbcType=VARCHAR}
+            </if>
+            <if test="alipayserviceappid != null">
+                AND AlipayServiceAppID=#{alipayserviceappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="accountcode != null">
+                AND AccountCode=#{accountcode,jdbcType=NVARCHAR}
+            </if>
+        </where>
+    </select>
+    <select id="searchByEntity" resultMap="BaseResultMap"
+            parameterType="com.yiku.dao.entity.aabankAccount.AABankAccountBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_BankAccount
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="bankno != null">
+                AND bankNo=#{bankno,jdbcType=NVARCHAR}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="isusingdeficitcontrol != null">
+                AND isusingdeficitcontrol=#{isusingdeficitcontrol,jdbcType=TINYINT}
+            </if>
+            <if test="isusingbankcheck != null">
+                AND isusingbankcheck=#{isusingbankcheck,jdbcType=TINYINT}
+            </if>
+            <if test="newbalanceAbandon != null">
+                AND NewBalance_Abandon=#{newbalanceAbandon,jdbcType=DECIMAL}
+            </if>
+            <if test="virtualpay != null">
+                AND VirtualPay=#{virtualpay,jdbcType=TINYINT}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idcurrency != null">
+                AND idcurrency=#{idcurrency,jdbcType=INTEGER}
+            </if>
+            <if test="iddepartment != null">
+                AND iddepartment=#{iddepartment,jdbcType=INTEGER}
+            </if>
+            <if test="idmarketingorgan != null">
+                AND idMarketingOrgan=#{idmarketingorgan,jdbcType=INTEGER}
+            </if>
+            <if test="balancedirection != null">
+                AND balancedirection=#{balancedirection,jdbcType=INTEGER}
+            </if>
+            <if test="bankname != null">
+                AND bankName=#{bankname,jdbcType=INTEGER}
+            </if>
+            <if test="banknotype != null">
+                AND bankNoType=#{banknotype,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="dateofusingbankcheck != null">
+                AND dateofusingbankcheck=#{dateofusingbankcheck,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="weixinappid != null">
+                AND WeixinAppID=#{weixinappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinpaykey != null">
+                AND WeixinPayKey=#{weixinpaykey,jdbcType=NVARCHAR}
+            </if>
+            <if test="alipayserviceno != null">
+                AND AlipayServiceNo=#{alipayserviceno,jdbcType=NVARCHAR}
+            </if>
+            <if test="alipayappid != null">
+                AND AlipayAppID=#{alipayappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinmerchantno != null">
+                AND WeiXinMerchantNo=#{weixinmerchantno,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinserviceno != null">
+                AND WeiXinServiceNo=#{weixinserviceno,jdbcType=NVARCHAR}
+            </if>
+            <if test="weixinserviceappid != null">
+                AND WeiXinServiceAPPID=#{weixinserviceappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="alipaypublickey != null">
+                AND AlipayPublicKey=#{alipaypublickey,jdbcType=NVARCHAR}
+            </if>
+            <if test="merchantpublickey != null">
+                AND MerchantPublicKey=#{merchantpublickey,jdbcType=NVARCHAR}
+            </if>
+            <if test="merchantprivatekey != null">
+                AND MerchantPrivateKey=#{merchantprivatekey,jdbcType=NVARCHAR}
+            </if>
+            <if test="encryptionmethod != null">
+                AND EncryptionMethod=#{encryptionmethod,jdbcType=INTEGER}
+            </if>
+            <if test="imagefile != null">
+                AND imageFile=#{imagefile,jdbcType=VARCHAR}
+            </if>
+            <if test="alipayserviceappid != null">
+                AND AlipayServiceAppID=#{alipayserviceappid,jdbcType=NVARCHAR}
+            </if>
+            <if test="accountcode != null">
+                AND AccountCode=#{accountcode,jdbcType=NVARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

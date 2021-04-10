@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="currencySign" property="currencysign" jdbcType="NVARCHAR"/>
+        <result column="isNative" property="isnative" jdbcType="TINYINT"/>
+        <result column="maxError" property="maxerror" jdbcType="DECIMAL"/>
+        <result column="exchangeRate" property="exchangerate" jdbcType="DECIMAL"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="updatedBy" property="updatedby" jdbcType="NVARCHAR"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="calDirection" property="caldirection" jdbcType="INTEGER"/>
+        <result column="madeDate" property="madedate" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+        <result column="ExChangeRateType" property="exchangeratetype" jdbcType="INTEGER"/>
+        <result column="AccountDate" property="accountdate" jdbcType="INTEGER"/>
+        <result column="AccountYear" property="accountyear" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aacurrency.AACurrencyBean" extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        code
+        , name, currencySign,
+      isNative, maxError, exchangeRate,
+      disabled, updatedBy, calDirection,
+      madeDate, updated, createdTime,
+      ExChangeRateType, AccountDate, AccountYear
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List" />
+        from AA_Currency
+        where id = #{id,jdbcType=INTEGER}
+
+    </select>
+    <insert id="insert" parameterType="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_Currency (code, name, currencySign,
+        isNative, maxError, exchangeRate,
+        disabled, updatedBy, calDirection,
+        madeDate, updated, createdTime,
+        ExChangeRateType, AccountDate, AccountYear,
+        ts)
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{currencysign,jdbcType=NVARCHAR},
+        #{isnative,jdbcType=TINYINT}, #{maxerror,jdbcType=DECIMAL}, #{exchangerate,jdbcType=DECIMAL},
+        #{disabled,jdbcType=TINYINT}, #{updatedby,jdbcType=NVARCHAR}, #{caldirection,jdbcType=INTEGER},
+        #{madedate,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, #{createdtime,jdbcType=TIMESTAMP},
+        #{exchangeratetype,jdbcType=INTEGER}, #{accountdate,jdbcType=INTEGER}, #{accountyear,jdbcType=INTEGER},
+        #{ts,jdbcType=BINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_Currency
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="currencysign != null">
+                currencySign,
+            </if>
+            <if test="isnative != null">
+                isNative,
+            </if>
+            <if test="maxerror != null">
+                maxError,
+            </if>
+            <if test="exchangerate != null">
+                exchangeRate,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="updatedby != null">
+                updatedBy,
+            </if>
+            <if test="caldirection != null">
+                calDirection,
+            </if>
+            <if test="madedate != null">
+                madeDate,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="exchangeratetype != null">
+                ExChangeRateType,
+            </if>
+            <if test="accountdate != null">
+                AccountDate,
+            </if>
+            <if test="accountyear != null">
+                AccountYear,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="currencysign != null">
+                #{currencysign,jdbcType=NVARCHAR},
+            </if>
+            <if test="isnative != null">
+                #{isnative,jdbcType=TINYINT},
+            </if>
+            <if test="maxerror != null">
+                #{maxerror,jdbcType=DECIMAL},
+            </if>
+            <if test="exchangerate != null">
+                #{exchangerate,jdbcType=DECIMAL},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="updatedby != null">
+                #{updatedby,jdbcType=NVARCHAR},
+            </if>
+            <if test="caldirection != null">
+                #{caldirection,jdbcType=INTEGER},
+            </if>
+            <if test="madedate != null">
+                #{madedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                #{updated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="exchangeratetype != null">
+                #{exchangeratetype,jdbcType=INTEGER},
+            </if>
+            <if test="accountdate != null">
+                #{accountdate,jdbcType=INTEGER},
+            </if>
+            <if test="accountyear != null">
+                #{accountyear,jdbcType=INTEGER},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+        select
+        count(*)
+        from AA_Currency
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="currencysign != null">
+                AND currencySign=#{currencysign,jdbcType=NVARCHAR}
+            </if>
+            <if test="isnative != null">
+                AND isNative=#{isnative,jdbcType=TINYINT}
+            </if>
+            <if test="maxerror != null">
+                AND maxError=#{maxerror,jdbcType=DECIMAL}
+            </if>
+            <if test="exchangerate != null">
+                AND exchangeRate=#{exchangerate,jdbcType=DECIMAL}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="caldirection != null">
+                AND calDirection=#{caldirection,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="exchangeratetype != null">
+                AND ExChangeRateType=#{exchangeratetype,jdbcType=INTEGER}
+            </if>
+            <if test="accountdate != null">
+                AND AccountDate=#{accountdate,jdbcType=INTEGER}
+            </if>
+            <if test="accountyear != null">
+                AND AccountYear=#{accountyear,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+    <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.aacurrency.AACurrencyBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_Currency
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="currencysign != null">
+                AND currencySign=#{currencysign,jdbcType=NVARCHAR}
+            </if>
+            <if test="isnative != null">
+                AND isNative=#{isnative,jdbcType=TINYINT}
+            </if>
+            <if test="maxerror != null">
+                AND maxError=#{maxerror,jdbcType=DECIMAL}
+            </if>
+            <if test="exchangerate != null">
+                AND exchangeRate=#{exchangerate,jdbcType=DECIMAL}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="caldirection != null">
+                AND calDirection=#{caldirection,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="exchangeratetype != null">
+                AND ExChangeRateType=#{exchangeratetype,jdbcType=INTEGER}
+            </if>
+            <if test="accountdate != null">
+                AND AccountDate=#{accountdate,jdbcType=INTEGER}
+            </if>
+            <if test="accountyear != null">
+                AND AccountYear=#{accountyear,jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aaexentity.AAExpenseItemBean">
+
+    <resultMap id="queryEpenseItem" type="com.yiku.common.dto.expenseList.ExpenselistQueryDTO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getAAExpenseItem" resultMap="queryEpenseItem">
+        select id, name, code
+        from AA_ExpenseItem
+        where idparent is null
+        order by id asc
+    </select>
+
+    <select id="getEpenseItemSonByCode" resultMap="queryEpenseItem" parameterType="java.lang.String">
+        select aa.id, aa.name, aa.code
+        from AA_ExpenseItem a,
+             AA_ExpenseItem aa
+        where a.id = aa.idparent
+          and a.code = #{code}
+    </select>
+
+</mapper>
+
+
+
+
+
+
+

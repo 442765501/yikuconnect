@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean">
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="updatedBy" property="updatedby" jdbcType="NVARCHAR"/>
+        <result column="chequeManagement" property="chequemanagement" jdbcType="TINYINT"/>
+        <result column="VirtualPay" property="virtualpay" jdbcType="TINYINT"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="idbankaccount" property="idbankaccount" jdbcType="INTEGER"/>
+        <result column="madeDate" property="madedate" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean" extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        code
+        , name, disabled,
+      updatedBy, chequeManagement, VirtualPay,
+      idbankaccount, madeDate, updated,
+      createdTime
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_SettleStyle
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_SettleStyle (code, name, disabled,
+        updatedBy, chequeManagement, VirtualPay,
+        idbankaccount, madeDate, updated,
+        createdTime, ts)
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{disabled,jdbcType=TINYINT},
+        #{updatedby,jdbcType=NVARCHAR}, #{chequemanagement,jdbcType=TINYINT}, #{virtualpay,jdbcType=TINYINT},
+        #{idbankaccount,jdbcType=INTEGER}, #{madedate,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP},
+        #{createdtime,jdbcType=TIMESTAMP}, #{ts,jdbcType=BINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_SettleStyle
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="updatedby != null">
+                updatedBy,
+            </if>
+            <if test="chequemanagement != null">
+                chequeManagement,
+            </if>
+            <if test="virtualpay != null">
+                VirtualPay,
+            </if>
+            <if test="idbankaccount != null">
+                idbankaccount,
+            </if>
+            <if test="madedate != null">
+                madeDate,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="updatedby != null">
+                #{updatedby,jdbcType=NVARCHAR},
+            </if>
+            <if test="chequemanagement != null">
+                #{chequemanagement,jdbcType=TINYINT},
+            </if>
+            <if test="virtualpay != null">
+                #{virtualpay,jdbcType=TINYINT},
+            </if>
+            <if test="idbankaccount != null">
+                #{idbankaccount,jdbcType=INTEGER},
+            </if>
+            <if test="madedate != null">
+                #{madedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                #{updated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean">
+        select
+        count(*)
+        from AA_SettleStyle
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="chequemanagement != null">
+                AND chequeManagement=#{chequemanagement,jdbcType=TINYINT}
+            </if>
+            <if test="virtualpay != null">
+                AND VirtualPay=#{virtualpay,jdbcType=TINYINT}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idbankaccount != null">
+                AND idbankaccount=#{idbankaccount,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="searchByEntity" resultMap="BaseResultMap"
+            parameterType="com.yiku.dao.entity.aasettleStyle.AASettleStyleBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_SettleStyle
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="chequemanagement != null">
+                AND chequeManagement=#{chequemanagement,jdbcType=TINYINT}
+            </if>
+            <if test="virtualpay != null">
+                AND VirtualPay=#{virtualpay,jdbcType=TINYINT}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idbankaccount != null">
+                AND idbankaccount=#{idbankaccount,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>

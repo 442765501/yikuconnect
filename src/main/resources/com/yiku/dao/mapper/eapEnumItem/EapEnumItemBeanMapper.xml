@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+  <resultMap id="BaseResultMap" type="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="Code" property="code" jdbcType="NVARCHAR" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="CustomUse" property="customuse" jdbcType="TINYINT" />
+    <result column="IsExtend" property="isextend" jdbcType="TINYINT" />
+    <result column="IsDeleted" property="isdeleted" jdbcType="TINYINT" />
+    <result column="position" property="position" jdbcType="INTEGER" />
+    <result column="ExpressionName" property="expressionname" jdbcType="NVARCHAR" />
+    <result column="idEnum" property="idenum" jdbcType="INTEGER" />
+    <result column="DefaultValue" property="defaultvalue" jdbcType="NVARCHAR" />
+    <result column="Remark" property="remark" jdbcType="NVARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" extends="BaseResultMap" >
+    <result column="TS" property="ts" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Code, Name, CustomUse, IsExtend, IsDeleted, position, ExpressionName, idEnum, 
+    DefaultValue, Remark
+  </sql>
+  <sql id="Blob_Column_List" >
+    TS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from eap_EnumItem
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from eap_EnumItem
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into eap_EnumItem (Code, Name, CustomUse, 
+      IsExtend, IsDeleted, position, 
+      ExpressionName, idEnum, DefaultValue, 
+      Remark, TS)
+    values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{customuse,jdbcType=TINYINT}, 
+      #{isextend,jdbcType=TINYINT}, #{isdeleted,jdbcType=TINYINT}, #{position,jdbcType=INTEGER}, 
+      #{expressionname,jdbcType=NVARCHAR}, #{idenum,jdbcType=INTEGER}, #{defaultvalue,jdbcType=NVARCHAR}, 
+      #{remark,jdbcType=NVARCHAR}, #{ts,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into eap_EnumItem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        Code,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="customuse != null" >
+        CustomUse,
+      </if>
+      <if test="isextend != null" >
+        IsExtend,
+      </if>
+      <if test="isdeleted != null" >
+        IsDeleted,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="expressionname != null" >
+        ExpressionName,
+      </if>
+      <if test="idenum != null" >
+        idEnum,
+      </if>
+      <if test="defaultvalue != null" >
+        DefaultValue,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="ts != null" >
+        TS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="customuse != null" >
+        #{customuse,jdbcType=TINYINT},
+      </if>
+      <if test="isextend != null" >
+        #{isextend,jdbcType=TINYINT},
+      </if>
+      <if test="isdeleted != null" >
+        #{isdeleted,jdbcType=TINYINT},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="expressionname != null" >
+        #{expressionname,jdbcType=NVARCHAR},
+      </if>
+      <if test="idenum != null" >
+        #{idenum,jdbcType=INTEGER},
+      </if>
+      <if test="defaultvalue != null" >
+        #{defaultvalue,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    update eap_EnumItem
+    <set >
+      <if test="code != null" >
+        Code = #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="customuse != null" >
+        CustomUse = #{customuse,jdbcType=TINYINT},
+      </if>
+      <if test="isextend != null" >
+        IsExtend = #{isextend,jdbcType=TINYINT},
+      </if>
+      <if test="isdeleted != null" >
+        IsDeleted = #{isdeleted,jdbcType=TINYINT},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=INTEGER},
+      </if>
+      <if test="expressionname != null" >
+        ExpressionName = #{expressionname,jdbcType=NVARCHAR},
+      </if>
+      <if test="idenum != null" >
+        idEnum = #{idenum,jdbcType=INTEGER},
+      </if>
+      <if test="defaultvalue != null" >
+        DefaultValue = #{defaultvalue,jdbcType=NVARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=NVARCHAR},
+      </if>
+      <if test="ts != null" >
+        TS = #{ts,jdbcType=BINARY},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    update eap_EnumItem
+    set Code = #{code,jdbcType=NVARCHAR},
+      Name = #{name,jdbcType=NVARCHAR},
+      CustomUse = #{customuse,jdbcType=TINYINT},
+      IsExtend = #{isextend,jdbcType=TINYINT},
+      IsDeleted = #{isdeleted,jdbcType=TINYINT},
+      position = #{position,jdbcType=INTEGER},
+      ExpressionName = #{expressionname,jdbcType=NVARCHAR},
+      idEnum = #{idenum,jdbcType=INTEGER},
+      DefaultValue = #{defaultvalue,jdbcType=NVARCHAR},
+      Remark = #{remark,jdbcType=NVARCHAR},
+      TS = #{ts,jdbcType=BINARY}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    update eap_EnumItem
+    set Code = #{code,jdbcType=NVARCHAR},
+      Name = #{name,jdbcType=NVARCHAR},
+      CustomUse = #{customuse,jdbcType=TINYINT},
+      IsExtend = #{isextend,jdbcType=TINYINT},
+      IsDeleted = #{isdeleted,jdbcType=TINYINT},
+      position = #{position,jdbcType=INTEGER},
+      ExpressionName = #{expressionname,jdbcType=NVARCHAR},
+      idEnum = #{idenum,jdbcType=INTEGER},
+      DefaultValue = #{defaultvalue,jdbcType=NVARCHAR},
+      Remark = #{remark,jdbcType=NVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="searchByEntityCount" resultType="java.lang.Integer" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    select
+    count(*)
+    from eap_EnumItem
+    <where>
+     <if test="code != null">
+      Code=#{code,jdbcType=NVARCHAR}
+     </if>
+     <if test="name != null">
+      AND Name=#{name,jdbcType=NVARCHAR}
+     </if>
+     <if test="customuse != null">
+      AND CustomUse=#{customuse,jdbcType=TINYINT}
+     </if>
+     <if test="isextend != null">
+      AND IsExtend=#{isextend,jdbcType=TINYINT}
+     </if>
+     <if test="isdeleted != null">
+      AND IsDeleted=#{isdeleted,jdbcType=TINYINT}
+     </if>
+     <if test="position != null">
+      AND position=#{position,jdbcType=INTEGER}
+     </if>
+     <if test="expressionname != null">
+      AND ExpressionName=#{expressionname,jdbcType=NVARCHAR}
+     </if>
+     <if test="idenum != null">
+      AND idEnum=#{idenum,jdbcType=INTEGER}
+     </if>
+     <if test="defaultvalue != null">
+      AND DefaultValue=#{defaultvalue,jdbcType=NVARCHAR}
+     </if>
+     <if test="remark != null">
+      AND Remark=#{remark,jdbcType=NVARCHAR}
+     </if>
+    </where>
+  </select>
+  <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean" >
+    select
+    <include refid="Base_Column_List"/>
+    from eap_EnumItem
+    <where>
+     <if test="code != null">
+      Code=#{code,jdbcType=NVARCHAR}
+     </if>
+     <if test="name != null">
+      AND Name=#{name,jdbcType=NVARCHAR}
+     </if>
+     <if test="customuse != null">
+      AND CustomUse=#{customuse,jdbcType=TINYINT}
+     </if>
+     <if test="isextend != null">
+      AND IsExtend=#{isextend,jdbcType=TINYINT}
+     </if>
+     <if test="isdeleted != null">
+      AND IsDeleted=#{isdeleted,jdbcType=TINYINT}
+     </if>
+     <if test="position != null">
+      AND position=#{position,jdbcType=INTEGER}
+     </if>
+     <if test="expressionname != null">
+      AND ExpressionName=#{expressionname,jdbcType=NVARCHAR}
+     </if>
+     <if test="idenum != null">
+      AND idEnum=#{idenum,jdbcType=INTEGER}
+     </if>
+     <if test="defaultvalue != null">
+      AND DefaultValue=#{defaultvalue,jdbcType=NVARCHAR}
+     </if>
+     <if test="remark != null">
+      AND Remark=#{remark,jdbcType=NVARCHAR}
+     </if>
+    </where>
+  </select>
+</mapper>

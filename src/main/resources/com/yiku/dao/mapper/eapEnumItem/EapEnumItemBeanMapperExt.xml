@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.eapEnumItem.EapEnumItemBean">
+
+    <resultMap id="queryBillType" type="com.yiku.common.dto.expenseList.BillType">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getBillTypeByIdEnum" resultMap="queryBillType">
+        select id, name, code
+        from eap_EnumItem
+        where idEnum = 37
+          and IsDeleted = 0
+        order by id asc
+    </select>
+</mapper>

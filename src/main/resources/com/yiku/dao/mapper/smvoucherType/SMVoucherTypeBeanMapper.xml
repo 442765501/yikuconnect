@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+  <resultMap id="BaseResultMap" type="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="NVARCHAR" />
+    <result column="name" property="name" jdbcType="NVARCHAR" />
+    <result column="moduleName" property="modulename" jdbcType="NVARCHAR" />
+    <result column="AuditModule" property="auditmodule" jdbcType="NVARCHAR" />
+    <result column="isautofillbreakpoint" property="isautofillbreakpoint" jdbcType="TINYINT" />
+    <result column="iseditable" property="iseditable" jdbcType="TINYINT" />
+    <result column="isneedaudit" property="isneedaudit" jdbcType="TINYINT" />
+    <result column="prefixion1" property="prefixion1" jdbcType="NVARCHAR" />
+    <result column="prefixion1length" property="prefixion1length" jdbcType="INTEGER" />
+    <result column="prefixion1content" property="prefixion1content" jdbcType="NVARCHAR" />
+    <result column="iscreatorderbyprefixion1" property="iscreatorderbyprefixion1" jdbcType="TINYINT" />
+    <result column="prefixion2" property="prefixion2" jdbcType="NVARCHAR" />
+    <result column="prefixion2content" property="prefixion2content" jdbcType="NVARCHAR" />
+    <result column="prefixion2length" property="prefixion2length" jdbcType="INTEGER" />
+    <result column="iscreatorderbyprefixion2" property="iscreatorderbyprefixion2" jdbcType="TINYINT" />
+    <result column="prefixion3" property="prefixion3" jdbcType="NVARCHAR" />
+    <result column="prefixion3content" property="prefixion3content" jdbcType="NVARCHAR" />
+    <result column="prefixion3length" property="prefixion3length" jdbcType="INTEGER" />
+    <result column="iscreatorderbyprefixion3" property="iscreatorderbyprefixion3" jdbcType="TINYINT" />
+    <result column="separator" property="separator" jdbcType="NVARCHAR" />
+    <result column="serialnolength" property="serialnolength" jdbcType="INTEGER" />
+    <result column="startordenalnumber" property="startordenalnumber" jdbcType="NUMERIC" />
+    <result column="disabled" property="disabled" jdbcType="TINYINT" />
+    <result column="issystem" property="issystem" jdbcType="TINYINT" />
+    <result column="isCodingVisible" property="iscodingvisible" jdbcType="TINYINT" />
+    <result column="isAudingVisible" property="isaudingvisible" jdbcType="TINYINT" />
+    <result column="vouchertypealias" property="vouchertypealias" jdbcType="NVARCHAR" />
+    <result column="isautocreate" property="isautocreate" jdbcType="TINYINT" />
+    <result column="DisplayOrder" property="displayorder" jdbcType="INTEGER" />
+    <result column="DtoName" property="dtoname" jdbcType="NVARCHAR" />
+    <result column="VoucherName" property="vouchername" jdbcType="NVARCHAR" />
+    <result column="DataType" property="datatype" jdbcType="NVARCHAR" />
+    <result column="isMessageCenterVisible" property="ismessagecentervisible" jdbcType="TINYINT" />
+    <result column="isVoucherSearchVisible" property="isvouchersearchvisible" jdbcType="TINYINT" />
+    <result column="prefixion1InterceptType" property="prefixion1intercepttype" jdbcType="INTEGER" />
+    <result column="prefixion2InterceptType" property="prefixion2intercepttype" jdbcType="INTEGER" />
+    <result column="prefixion3InterceptType" property="prefixion3intercepttype" jdbcType="INTEGER" />
+    <result column="IsNeedWorkFlow" property="isneedworkflow" jdbcType="TINYINT" />
+    <result column="CodeManner" property="codemanner" jdbcType="INTEGER" />
+    <result column="IsPrefix1ReadOnly" property="isprefix1readonly" jdbcType="INTEGER" />
+    <result column="SysPropFields" property="syspropfields" jdbcType="NVARCHAR" />
+    <result column="ExpressionName" property="expressionname" jdbcType="NVARCHAR" />
+    <result column="isAuditPrint" property="isauditprint" jdbcType="TINYINT" />
+    <result column="IsEnableWFEmail" property="isenablewfemail" jdbcType="TINYINT" />
+    <result column="IsNeedGzqAudit" property="isneedgzqaudit" jdbcType="TINYINT" />
+    <result column="IsCreditControl" property="iscreditcontrol" jdbcType="TINYINT" />
+    <result column="voucherDateBasis" property="voucherdatebasis" jdbcType="NVARCHAR" />
+    <result column="IsHighestPriceControl" property="ishighestpricecontrol" jdbcType="TINYINT" />
+    <result column="IsLowestPriceControl" property="islowestpricecontrol" jdbcType="TINYINT" />
+    <result column="IsOutSourcePriceControl" property="isoutsourcepricecontrol" jdbcType="TINYINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" extends="BaseResultMap" >
+    <result column="ts" property="ts" jdbcType="BINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, code, name, moduleName, AuditModule, isautofillbreakpoint, iseditable, isneedaudit, 
+    prefixion1, prefixion1length, prefixion1content, iscreatorderbyprefixion1, prefixion2, 
+    prefixion2content, prefixion2length, iscreatorderbyprefixion2, prefixion3, prefixion3content, 
+    prefixion3length, iscreatorderbyprefixion3, separator, serialnolength, startordenalnumber, 
+    disabled, issystem, isCodingVisible, isAudingVisible, vouchertypealias, isautocreate, 
+    DisplayOrder, DtoName, VoucherName, DataType, isMessageCenterVisible, isVoucherSearchVisible, 
+    prefixion1InterceptType, prefixion2InterceptType, prefixion3InterceptType, IsNeedWorkFlow, 
+    CodeManner, IsPrefix1ReadOnly, SysPropFields, ExpressionName, isAuditPrint, IsEnableWFEmail, 
+    IsNeedGzqAudit, IsCreditControl, voucherDateBasis, IsHighestPriceControl, IsLowestPriceControl, 
+    IsOutSourcePriceControl
+  </sql>
+  <sql id="Blob_Column_List" >
+    ts
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from SM_VoucherType
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from SM_VoucherType
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into SM_VoucherType (code, name, moduleName, 
+      AuditModule, isautofillbreakpoint, iseditable, 
+      isneedaudit, prefixion1, prefixion1length, 
+      prefixion1content, iscreatorderbyprefixion1, 
+      prefixion2, prefixion2content, prefixion2length, 
+      iscreatorderbyprefixion2, prefixion3, 
+      prefixion3content, prefixion3length, iscreatorderbyprefixion3, 
+      separator, serialnolength, startordenalnumber, 
+      disabled, issystem, isCodingVisible, 
+      isAudingVisible, vouchertypealias, isautocreate, 
+      DisplayOrder, DtoName, VoucherName, 
+      DataType, isMessageCenterVisible, isVoucherSearchVisible, 
+      prefixion1InterceptType, prefixion2InterceptType, 
+      prefixion3InterceptType, IsNeedWorkFlow, 
+      CodeManner, IsPrefix1ReadOnly, SysPropFields, 
+      ExpressionName, isAuditPrint, IsEnableWFEmail, 
+      IsNeedGzqAudit, IsCreditControl, voucherDateBasis, 
+      IsHighestPriceControl, IsLowestPriceControl, 
+      IsOutSourcePriceControl, ts)
+    values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{modulename,jdbcType=NVARCHAR}, 
+      #{auditmodule,jdbcType=NVARCHAR}, #{isautofillbreakpoint,jdbcType=TINYINT}, #{iseditable,jdbcType=TINYINT}, 
+      #{isneedaudit,jdbcType=TINYINT}, #{prefixion1,jdbcType=NVARCHAR}, #{prefixion1length,jdbcType=INTEGER}, 
+      #{prefixion1content,jdbcType=NVARCHAR}, #{iscreatorderbyprefixion1,jdbcType=TINYINT}, 
+      #{prefixion2,jdbcType=NVARCHAR}, #{prefixion2content,jdbcType=NVARCHAR}, #{prefixion2length,jdbcType=INTEGER}, 
+      #{iscreatorderbyprefixion2,jdbcType=TINYINT}, #{prefixion3,jdbcType=NVARCHAR}, 
+      #{prefixion3content,jdbcType=NVARCHAR}, #{prefixion3length,jdbcType=INTEGER}, #{iscreatorderbyprefixion3,jdbcType=TINYINT}, 
+      #{separator,jdbcType=NVARCHAR}, #{serialnolength,jdbcType=INTEGER}, #{startordenalnumber,jdbcType=NUMERIC}, 
+      #{disabled,jdbcType=TINYINT}, #{issystem,jdbcType=TINYINT}, #{iscodingvisible,jdbcType=TINYINT}, 
+      #{isaudingvisible,jdbcType=TINYINT}, #{vouchertypealias,jdbcType=NVARCHAR}, #{isautocreate,jdbcType=TINYINT}, 
+      #{displayorder,jdbcType=INTEGER}, #{dtoname,jdbcType=NVARCHAR}, #{vouchername,jdbcType=NVARCHAR}, 
+      #{datatype,jdbcType=NVARCHAR}, #{ismessagecentervisible,jdbcType=TINYINT}, #{isvouchersearchvisible,jdbcType=TINYINT}, 
+      #{prefixion1intercepttype,jdbcType=INTEGER}, #{prefixion2intercepttype,jdbcType=INTEGER}, 
+      #{prefixion3intercepttype,jdbcType=INTEGER}, #{isneedworkflow,jdbcType=TINYINT}, 
+      #{codemanner,jdbcType=INTEGER}, #{isprefix1readonly,jdbcType=INTEGER}, #{syspropfields,jdbcType=NVARCHAR}, 
+      #{expressionname,jdbcType=NVARCHAR}, #{isauditprint,jdbcType=TINYINT}, #{isenablewfemail,jdbcType=TINYINT}, 
+      #{isneedgzqaudit,jdbcType=TINYINT}, #{iscreditcontrol,jdbcType=TINYINT}, #{voucherdatebasis,jdbcType=NVARCHAR}, 
+      #{ishighestpricecontrol,jdbcType=TINYINT}, #{islowestpricecontrol,jdbcType=TINYINT}, 
+      #{isoutsourcepricecontrol,jdbcType=TINYINT}, #{ts,jdbcType=BINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into SM_VoucherType
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="modulename != null" >
+        moduleName,
+      </if>
+      <if test="auditmodule != null" >
+        AuditModule,
+      </if>
+      <if test="isautofillbreakpoint != null" >
+        isautofillbreakpoint,
+      </if>
+      <if test="iseditable != null" >
+        iseditable,
+      </if>
+      <if test="isneedaudit != null" >
+        isneedaudit,
+      </if>
+      <if test="prefixion1 != null" >
+        prefixion1,
+      </if>
+      <if test="prefixion1length != null" >
+        prefixion1length,
+      </if>
+      <if test="prefixion1content != null" >
+        prefixion1content,
+      </if>
+      <if test="iscreatorderbyprefixion1 != null" >
+        iscreatorderbyprefixion1,
+      </if>
+      <if test="prefixion2 != null" >
+        prefixion2,
+      </if>
+      <if test="prefixion2content != null" >
+        prefixion2content,
+      </if>
+      <if test="prefixion2length != null" >
+        prefixion2length,
+      </if>
+      <if test="iscreatorderbyprefixion2 != null" >
+        iscreatorderbyprefixion2,
+      </if>
+      <if test="prefixion3 != null" >
+        prefixion3,
+      </if>
+      <if test="prefixion3content != null" >
+        prefixion3content,
+      </if>
+      <if test="prefixion3length != null" >
+        prefixion3length,
+      </if>
+      <if test="iscreatorderbyprefixion3 != null" >
+        iscreatorderbyprefixion3,
+      </if>
+      <if test="separator != null" >
+        separator,
+      </if>
+      <if test="serialnolength != null" >
+        serialnolength,
+      </if>
+      <if test="startordenalnumber != null" >
+        startordenalnumber,
+      </if>
+      <if test="disabled != null" >
+        disabled,
+      </if>
+      <if test="issystem != null" >
+        issystem,
+      </if>
+      <if test="iscodingvisible != null" >
+        isCodingVisible,
+      </if>
+      <if test="isaudingvisible != null" >
+        isAudingVisible,
+      </if>
+      <if test="vouchertypealias != null" >
+        vouchertypealias,
+      </if>
+      <if test="isautocreate != null" >
+        isautocreate,
+      </if>
+      <if test="displayorder != null" >
+        DisplayOrder,
+      </if>
+      <if test="dtoname != null" >
+        DtoName,
+      </if>
+      <if test="vouchername != null" >
+        VoucherName,
+      </if>
+      <if test="datatype != null" >
+        DataType,
+      </if>
+      <if test="ismessagecentervisible != null" >
+        isMessageCenterVisible,
+      </if>
+      <if test="isvouchersearchvisible != null" >
+        isVoucherSearchVisible,
+      </if>
+      <if test="prefixion1intercepttype != null" >
+        prefixion1InterceptType,
+      </if>
+      <if test="prefixion2intercepttype != null" >
+        prefixion2InterceptType,
+      </if>
+      <if test="prefixion3intercepttype != null" >
+        prefixion3InterceptType,
+      </if>
+      <if test="isneedworkflow != null" >
+        IsNeedWorkFlow,
+      </if>
+      <if test="codemanner != null" >
+        CodeManner,
+      </if>
+      <if test="isprefix1readonly != null" >
+        IsPrefix1ReadOnly,
+      </if>
+      <if test="syspropfields != null" >
+        SysPropFields,
+      </if>
+      <if test="expressionname != null" >
+        ExpressionName,
+      </if>
+      <if test="isauditprint != null" >
+        isAuditPrint,
+      </if>
+      <if test="isenablewfemail != null" >
+        IsEnableWFEmail,
+      </if>
+      <if test="isneedgzqaudit != null" >
+        IsNeedGzqAudit,
+      </if>
+      <if test="iscreditcontrol != null" >
+        IsCreditControl,
+      </if>
+      <if test="voucherdatebasis != null" >
+        voucherDateBasis,
+      </if>
+      <if test="ishighestpricecontrol != null" >
+        IsHighestPriceControl,
+      </if>
+      <if test="islowestpricecontrol != null" >
+        IsLowestPriceControl,
+      </if>
+      <if test="isoutsourcepricecontrol != null" >
+        IsOutSourcePriceControl,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="modulename != null" >
+        #{modulename,jdbcType=NVARCHAR},
+      </if>
+      <if test="auditmodule != null" >
+        #{auditmodule,jdbcType=NVARCHAR},
+      </if>
+      <if test="isautofillbreakpoint != null" >
+        #{isautofillbreakpoint,jdbcType=TINYINT},
+      </if>
+      <if test="iseditable != null" >
+        #{iseditable,jdbcType=TINYINT},
+      </if>
+      <if test="isneedaudit != null" >
+        #{isneedaudit,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion1 != null" >
+        #{prefixion1,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion1length != null" >
+        #{prefixion1length,jdbcType=INTEGER},
+      </if>
+      <if test="prefixion1content != null" >
+        #{prefixion1content,jdbcType=NVARCHAR},
+      </if>
+      <if test="iscreatorderbyprefixion1 != null" >
+        #{iscreatorderbyprefixion1,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion2 != null" >
+        #{prefixion2,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion2content != null" >
+        #{prefixion2content,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion2length != null" >
+        #{prefixion2length,jdbcType=INTEGER},
+      </if>
+      <if test="iscreatorderbyprefixion2 != null" >
+        #{iscreatorderbyprefixion2,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion3 != null" >
+        #{prefixion3,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion3content != null" >
+        #{prefixion3content,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion3length != null" >
+        #{prefixion3length,jdbcType=INTEGER},
+      </if>
+      <if test="iscreatorderbyprefixion3 != null" >
+        #{iscreatorderbyprefixion3,jdbcType=TINYINT},
+      </if>
+      <if test="separator != null" >
+        #{separator,jdbcType=NVARCHAR},
+      </if>
+      <if test="serialnolength != null" >
+        #{serialnolength,jdbcType=INTEGER},
+      </if>
+      <if test="startordenalnumber != null" >
+        #{startordenalnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="disabled != null" >
+        #{disabled,jdbcType=TINYINT},
+      </if>
+      <if test="issystem != null" >
+        #{issystem,jdbcType=TINYINT},
+      </if>
+      <if test="iscodingvisible != null" >
+        #{iscodingvisible,jdbcType=TINYINT},
+      </if>
+      <if test="isaudingvisible != null" >
+        #{isaudingvisible,jdbcType=TINYINT},
+      </if>
+      <if test="vouchertypealias != null" >
+        #{vouchertypealias,jdbcType=NVARCHAR},
+      </if>
+      <if test="isautocreate != null" >
+        #{isautocreate,jdbcType=TINYINT},
+      </if>
+      <if test="displayorder != null" >
+        #{displayorder,jdbcType=INTEGER},
+      </if>
+      <if test="dtoname != null" >
+        #{dtoname,jdbcType=NVARCHAR},
+      </if>
+      <if test="vouchername != null" >
+        #{vouchername,jdbcType=NVARCHAR},
+      </if>
+      <if test="datatype != null" >
+        #{datatype,jdbcType=NVARCHAR},
+      </if>
+      <if test="ismessagecentervisible != null" >
+        #{ismessagecentervisible,jdbcType=TINYINT},
+      </if>
+      <if test="isvouchersearchvisible != null" >
+        #{isvouchersearchvisible,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion1intercepttype != null" >
+        #{prefixion1intercepttype,jdbcType=INTEGER},
+      </if>
+      <if test="prefixion2intercepttype != null" >
+        #{prefixion2intercepttype,jdbcType=INTEGER},
+      </if>
+      <if test="prefixion3intercepttype != null" >
+        #{prefixion3intercepttype,jdbcType=INTEGER},
+      </if>
+      <if test="isneedworkflow != null" >
+        #{isneedworkflow,jdbcType=TINYINT},
+      </if>
+      <if test="codemanner != null" >
+        #{codemanner,jdbcType=INTEGER},
+      </if>
+      <if test="isprefix1readonly != null" >
+        #{isprefix1readonly,jdbcType=INTEGER},
+      </if>
+      <if test="syspropfields != null" >
+        #{syspropfields,jdbcType=NVARCHAR},
+      </if>
+      <if test="expressionname != null" >
+        #{expressionname,jdbcType=NVARCHAR},
+      </if>
+      <if test="isauditprint != null" >
+        #{isauditprint,jdbcType=TINYINT},
+      </if>
+      <if test="isenablewfemail != null" >
+        #{isenablewfemail,jdbcType=TINYINT},
+      </if>
+      <if test="isneedgzqaudit != null" >
+        #{isneedgzqaudit,jdbcType=TINYINT},
+      </if>
+      <if test="iscreditcontrol != null" >
+        #{iscreditcontrol,jdbcType=TINYINT},
+      </if>
+      <if test="voucherdatebasis != null" >
+        #{voucherdatebasis,jdbcType=NVARCHAR},
+      </if>
+      <if test="ishighestpricecontrol != null" >
+        #{ishighestpricecontrol,jdbcType=TINYINT},
+      </if>
+      <if test="islowestpricecontrol != null" >
+        #{islowestpricecontrol,jdbcType=TINYINT},
+      </if>
+      <if test="isoutsourcepricecontrol != null" >
+        #{isoutsourcepricecontrol,jdbcType=TINYINT},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=BINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    update SM_VoucherType
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=NVARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="modulename != null" >
+        moduleName = #{modulename,jdbcType=NVARCHAR},
+      </if>
+      <if test="auditmodule != null" >
+        AuditModule = #{auditmodule,jdbcType=NVARCHAR},
+      </if>
+      <if test="isautofillbreakpoint != null" >
+        isautofillbreakpoint = #{isautofillbreakpoint,jdbcType=TINYINT},
+      </if>
+      <if test="iseditable != null" >
+        iseditable = #{iseditable,jdbcType=TINYINT},
+      </if>
+      <if test="isneedaudit != null" >
+        isneedaudit = #{isneedaudit,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion1 != null" >
+        prefixion1 = #{prefixion1,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion1length != null" >
+        prefixion1length = #{prefixion1length,jdbcType=INTEGER},
+      </if>
+      <if test="prefixion1content != null" >
+        prefixion1content = #{prefixion1content,jdbcType=NVARCHAR},
+      </if>
+      <if test="iscreatorderbyprefixion1 != null" >
+        iscreatorderbyprefixion1 = #{iscreatorderbyprefixion1,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion2 != null" >
+        prefixion2 = #{prefixion2,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion2content != null" >
+        prefixion2content = #{prefixion2content,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion2length != null" >
+        prefixion2length = #{prefixion2length,jdbcType=INTEGER},
+      </if>
+      <if test="iscreatorderbyprefixion2 != null" >
+        iscreatorderbyprefixion2 = #{iscreatorderbyprefixion2,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion3 != null" >
+        prefixion3 = #{prefixion3,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion3content != null" >
+        prefixion3content = #{prefixion3content,jdbcType=NVARCHAR},
+      </if>
+      <if test="prefixion3length != null" >
+        prefixion3length = #{prefixion3length,jdbcType=INTEGER},
+      </if>
+      <if test="iscreatorderbyprefixion3 != null" >
+        iscreatorderbyprefixion3 = #{iscreatorderbyprefixion3,jdbcType=TINYINT},
+      </if>
+      <if test="separator != null" >
+        separator = #{separator,jdbcType=NVARCHAR},
+      </if>
+      <if test="serialnolength != null" >
+        serialnolength = #{serialnolength,jdbcType=INTEGER},
+      </if>
+      <if test="startordenalnumber != null" >
+        startordenalnumber = #{startordenalnumber,jdbcType=NUMERIC},
+      </if>
+      <if test="disabled != null" >
+        disabled = #{disabled,jdbcType=TINYINT},
+      </if>
+      <if test="issystem != null" >
+        issystem = #{issystem,jdbcType=TINYINT},
+      </if>
+      <if test="iscodingvisible != null" >
+        isCodingVisible = #{iscodingvisible,jdbcType=TINYINT},
+      </if>
+      <if test="isaudingvisible != null" >
+        isAudingVisible = #{isaudingvisible,jdbcType=TINYINT},
+      </if>
+      <if test="vouchertypealias != null" >
+        vouchertypealias = #{vouchertypealias,jdbcType=NVARCHAR},
+      </if>
+      <if test="isautocreate != null" >
+        isautocreate = #{isautocreate,jdbcType=TINYINT},
+      </if>
+      <if test="displayorder != null" >
+        DisplayOrder = #{displayorder,jdbcType=INTEGER},
+      </if>
+      <if test="dtoname != null" >
+        DtoName = #{dtoname,jdbcType=NVARCHAR},
+      </if>
+      <if test="vouchername != null" >
+        VoucherName = #{vouchername,jdbcType=NVARCHAR},
+      </if>
+      <if test="datatype != null" >
+        DataType = #{datatype,jdbcType=NVARCHAR},
+      </if>
+      <if test="ismessagecentervisible != null" >
+        isMessageCenterVisible = #{ismessagecentervisible,jdbcType=TINYINT},
+      </if>
+      <if test="isvouchersearchvisible != null" >
+        isVoucherSearchVisible = #{isvouchersearchvisible,jdbcType=TINYINT},
+      </if>
+      <if test="prefixion1intercepttype != null" >
+        prefixion1InterceptType = #{prefixion1intercepttype,jdbcType=INTEGER},
+      </if>
+      <if test="prefixion2intercepttype != null" >
+        prefixion2InterceptType = #{prefixion2intercepttype,jdbcType=INTEGER},
+      </if>
+      <if test="prefixion3intercepttype != null" >
+        prefixion3InterceptType = #{prefixion3intercepttype,jdbcType=INTEGER},
+      </if>
+      <if test="isneedworkflow != null" >
+        IsNeedWorkFlow = #{isneedworkflow,jdbcType=TINYINT},
+      </if>
+      <if test="codemanner != null" >
+        CodeManner = #{codemanner,jdbcType=INTEGER},
+      </if>
+      <if test="isprefix1readonly != null" >
+        IsPrefix1ReadOnly = #{isprefix1readonly,jdbcType=INTEGER},
+      </if>
+      <if test="syspropfields != null" >
+        SysPropFields = #{syspropfields,jdbcType=NVARCHAR},
+      </if>
+      <if test="expressionname != null" >
+        ExpressionName = #{expressionname,jdbcType=NVARCHAR},
+      </if>
+      <if test="isauditprint != null" >
+        isAuditPrint = #{isauditprint,jdbcType=TINYINT},
+      </if>
+      <if test="isenablewfemail != null" >
+        IsEnableWFEmail = #{isenablewfemail,jdbcType=TINYINT},
+      </if>
+      <if test="isneedgzqaudit != null" >
+        IsNeedGzqAudit = #{isneedgzqaudit,jdbcType=TINYINT},
+      </if>
+      <if test="iscreditcontrol != null" >
+        IsCreditControl = #{iscreditcontrol,jdbcType=TINYINT},
+      </if>
+      <if test="voucherdatebasis != null" >
+        voucherDateBasis = #{voucherdatebasis,jdbcType=NVARCHAR},
+      </if>
+      <if test="ishighestpricecontrol != null" >
+        IsHighestPriceControl = #{ishighestpricecontrol,jdbcType=TINYINT},
+      </if>
+      <if test="islowestpricecontrol != null" >
+        IsLowestPriceControl = #{islowestpricecontrol,jdbcType=TINYINT},
+      </if>
+      <if test="isoutsourcepricecontrol != null" >
+        IsOutSourcePriceControl = #{isoutsourcepricecontrol,jdbcType=TINYINT},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=BINARY},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    update SM_VoucherType
+    set code = #{code,jdbcType=NVARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+      moduleName = #{modulename,jdbcType=NVARCHAR},
+      AuditModule = #{auditmodule,jdbcType=NVARCHAR},
+      isautofillbreakpoint = #{isautofillbreakpoint,jdbcType=TINYINT},
+      iseditable = #{iseditable,jdbcType=TINYINT},
+      isneedaudit = #{isneedaudit,jdbcType=TINYINT},
+      prefixion1 = #{prefixion1,jdbcType=NVARCHAR},
+      prefixion1length = #{prefixion1length,jdbcType=INTEGER},
+      prefixion1content = #{prefixion1content,jdbcType=NVARCHAR},
+      iscreatorderbyprefixion1 = #{iscreatorderbyprefixion1,jdbcType=TINYINT},
+      prefixion2 = #{prefixion2,jdbcType=NVARCHAR},
+      prefixion2content = #{prefixion2content,jdbcType=NVARCHAR},
+      prefixion2length = #{prefixion2length,jdbcType=INTEGER},
+      iscreatorderbyprefixion2 = #{iscreatorderbyprefixion2,jdbcType=TINYINT},
+      prefixion3 = #{prefixion3,jdbcType=NVARCHAR},
+      prefixion3content = #{prefixion3content,jdbcType=NVARCHAR},
+      prefixion3length = #{prefixion3length,jdbcType=INTEGER},
+      iscreatorderbyprefixion3 = #{iscreatorderbyprefixion3,jdbcType=TINYINT},
+      separator = #{separator,jdbcType=NVARCHAR},
+      serialnolength = #{serialnolength,jdbcType=INTEGER},
+      startordenalnumber = #{startordenalnumber,jdbcType=NUMERIC},
+      disabled = #{disabled,jdbcType=TINYINT},
+      issystem = #{issystem,jdbcType=TINYINT},
+      isCodingVisible = #{iscodingvisible,jdbcType=TINYINT},
+      isAudingVisible = #{isaudingvisible,jdbcType=TINYINT},
+      vouchertypealias = #{vouchertypealias,jdbcType=NVARCHAR},
+      isautocreate = #{isautocreate,jdbcType=TINYINT},
+      DisplayOrder = #{displayorder,jdbcType=INTEGER},
+      DtoName = #{dtoname,jdbcType=NVARCHAR},
+      VoucherName = #{vouchername,jdbcType=NVARCHAR},
+      DataType = #{datatype,jdbcType=NVARCHAR},
+      isMessageCenterVisible = #{ismessagecentervisible,jdbcType=TINYINT},
+      isVoucherSearchVisible = #{isvouchersearchvisible,jdbcType=TINYINT},
+      prefixion1InterceptType = #{prefixion1intercepttype,jdbcType=INTEGER},
+      prefixion2InterceptType = #{prefixion2intercepttype,jdbcType=INTEGER},
+      prefixion3InterceptType = #{prefixion3intercepttype,jdbcType=INTEGER},
+      IsNeedWorkFlow = #{isneedworkflow,jdbcType=TINYINT},
+      CodeManner = #{codemanner,jdbcType=INTEGER},
+      IsPrefix1ReadOnly = #{isprefix1readonly,jdbcType=INTEGER},
+      SysPropFields = #{syspropfields,jdbcType=NVARCHAR},
+      ExpressionName = #{expressionname,jdbcType=NVARCHAR},
+      isAuditPrint = #{isauditprint,jdbcType=TINYINT},
+      IsEnableWFEmail = #{isenablewfemail,jdbcType=TINYINT},
+      IsNeedGzqAudit = #{isneedgzqaudit,jdbcType=TINYINT},
+      IsCreditControl = #{iscreditcontrol,jdbcType=TINYINT},
+      voucherDateBasis = #{voucherdatebasis,jdbcType=NVARCHAR},
+      IsHighestPriceControl = #{ishighestpricecontrol,jdbcType=TINYINT},
+      IsLowestPriceControl = #{islowestpricecontrol,jdbcType=TINYINT},
+      IsOutSourcePriceControl = #{isoutsourcepricecontrol,jdbcType=TINYINT},
+      ts = #{ts,jdbcType=BINARY}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    update SM_VoucherType
+    set code = #{code,jdbcType=NVARCHAR},
+      name = #{name,jdbcType=NVARCHAR},
+      moduleName = #{modulename,jdbcType=NVARCHAR},
+      AuditModule = #{auditmodule,jdbcType=NVARCHAR},
+      isautofillbreakpoint = #{isautofillbreakpoint,jdbcType=TINYINT},
+      iseditable = #{iseditable,jdbcType=TINYINT},
+      isneedaudit = #{isneedaudit,jdbcType=TINYINT},
+      prefixion1 = #{prefixion1,jdbcType=NVARCHAR},
+      prefixion1length = #{prefixion1length,jdbcType=INTEGER},
+      prefixion1content = #{prefixion1content,jdbcType=NVARCHAR},
+      iscreatorderbyprefixion1 = #{iscreatorderbyprefixion1,jdbcType=TINYINT},
+      prefixion2 = #{prefixion2,jdbcType=NVARCHAR},
+      prefixion2content = #{prefixion2content,jdbcType=NVARCHAR},
+      prefixion2length = #{prefixion2length,jdbcType=INTEGER},
+      iscreatorderbyprefixion2 = #{iscreatorderbyprefixion2,jdbcType=TINYINT},
+      prefixion3 = #{prefixion3,jdbcType=NVARCHAR},
+      prefixion3content = #{prefixion3content,jdbcType=NVARCHAR},
+      prefixion3length = #{prefixion3length,jdbcType=INTEGER},
+      iscreatorderbyprefixion3 = #{iscreatorderbyprefixion3,jdbcType=TINYINT},
+      separator = #{separator,jdbcType=NVARCHAR},
+      serialnolength = #{serialnolength,jdbcType=INTEGER},
+      startordenalnumber = #{startordenalnumber,jdbcType=NUMERIC},
+      disabled = #{disabled,jdbcType=TINYINT},
+      issystem = #{issystem,jdbcType=TINYINT},
+      isCodingVisible = #{iscodingvisible,jdbcType=TINYINT},
+      isAudingVisible = #{isaudingvisible,jdbcType=TINYINT},
+      vouchertypealias = #{vouchertypealias,jdbcType=NVARCHAR},
+      isautocreate = #{isautocreate,jdbcType=TINYINT},
+      DisplayOrder = #{displayorder,jdbcType=INTEGER},
+      DtoName = #{dtoname,jdbcType=NVARCHAR},
+      VoucherName = #{vouchername,jdbcType=NVARCHAR},
+      DataType = #{datatype,jdbcType=NVARCHAR},
+      isMessageCenterVisible = #{ismessagecentervisible,jdbcType=TINYINT},
+      isVoucherSearchVisible = #{isvouchersearchvisible,jdbcType=TINYINT},
+      prefixion1InterceptType = #{prefixion1intercepttype,jdbcType=INTEGER},
+      prefixion2InterceptType = #{prefixion2intercepttype,jdbcType=INTEGER},
+      prefixion3InterceptType = #{prefixion3intercepttype,jdbcType=INTEGER},
+      IsNeedWorkFlow = #{isneedworkflow,jdbcType=TINYINT},
+      CodeManner = #{codemanner,jdbcType=INTEGER},
+      IsPrefix1ReadOnly = #{isprefix1readonly,jdbcType=INTEGER},
+      SysPropFields = #{syspropfields,jdbcType=NVARCHAR},
+      ExpressionName = #{expressionname,jdbcType=NVARCHAR},
+      isAuditPrint = #{isauditprint,jdbcType=TINYINT},
+      IsEnableWFEmail = #{isenablewfemail,jdbcType=TINYINT},
+      IsNeedGzqAudit = #{isneedgzqaudit,jdbcType=TINYINT},
+      IsCreditControl = #{iscreditcontrol,jdbcType=TINYINT},
+      voucherDateBasis = #{voucherdatebasis,jdbcType=NVARCHAR},
+      IsHighestPriceControl = #{ishighestpricecontrol,jdbcType=TINYINT},
+      IsLowestPriceControl = #{islowestpricecontrol,jdbcType=TINYINT},
+      IsOutSourcePriceControl = #{isoutsourcepricecontrol,jdbcType=TINYINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="searchByEntityCount" resultType="java.lang.Integer" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    select
+    count(*)
+    from SM_VoucherType
+    <where>
+     <if test="code != null">
+      code=#{code,jdbcType=NVARCHAR}
+     </if>
+     <if test="name != null">
+      AND name=#{name,jdbcType=NVARCHAR}
+     </if>
+     <if test="modulename != null">
+      AND moduleName=#{modulename,jdbcType=NVARCHAR}
+     </if>
+     <if test="auditmodule != null">
+      AND AuditModule=#{auditmodule,jdbcType=NVARCHAR}
+     </if>
+     <if test="isautofillbreakpoint != null">
+      AND isautofillbreakpoint=#{isautofillbreakpoint,jdbcType=TINYINT}
+     </if>
+     <if test="iseditable != null">
+      AND iseditable=#{iseditable,jdbcType=TINYINT}
+     </if>
+     <if test="isneedaudit != null">
+      AND isneedaudit=#{isneedaudit,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion1 != null">
+      AND prefixion1=#{prefixion1,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion1length != null">
+      AND prefixion1length=#{prefixion1length,jdbcType=INTEGER}
+     </if>
+     <if test="prefixion1content != null">
+      AND prefixion1content=#{prefixion1content,jdbcType=NVARCHAR}
+     </if>
+     <if test="iscreatorderbyprefixion1 != null">
+      AND iscreatorderbyprefixion1=#{iscreatorderbyprefixion1,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion2 != null">
+      AND prefixion2=#{prefixion2,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion2content != null">
+      AND prefixion2content=#{prefixion2content,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion2length != null">
+      AND prefixion2length=#{prefixion2length,jdbcType=INTEGER}
+     </if>
+     <if test="iscreatorderbyprefixion2 != null">
+      AND iscreatorderbyprefixion2=#{iscreatorderbyprefixion2,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion3 != null">
+      AND prefixion3=#{prefixion3,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion3content != null">
+      AND prefixion3content=#{prefixion3content,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion3length != null">
+      AND prefixion3length=#{prefixion3length,jdbcType=INTEGER}
+     </if>
+     <if test="iscreatorderbyprefixion3 != null">
+      AND iscreatorderbyprefixion3=#{iscreatorderbyprefixion3,jdbcType=TINYINT}
+     </if>
+     <if test="separator != null">
+      AND separator=#{separator,jdbcType=NVARCHAR}
+     </if>
+     <if test="serialnolength != null">
+      AND serialnolength=#{serialnolength,jdbcType=INTEGER}
+     </if>
+     <if test="startordenalnumber != null">
+      AND startordenalnumber=#{startordenalnumber,jdbcType=NUMERIC}
+     </if>
+     <if test="disabled != null">
+      AND disabled=#{disabled,jdbcType=TINYINT}
+     </if>
+     <if test="issystem != null">
+      AND issystem=#{issystem,jdbcType=TINYINT}
+     </if>
+     <if test="iscodingvisible != null">
+      AND isCodingVisible=#{iscodingvisible,jdbcType=TINYINT}
+     </if>
+     <if test="isaudingvisible != null">
+      AND isAudingVisible=#{isaudingvisible,jdbcType=TINYINT}
+     </if>
+     <if test="vouchertypealias != null">
+      AND vouchertypealias=#{vouchertypealias,jdbcType=NVARCHAR}
+     </if>
+     <if test="isautocreate != null">
+      AND isautocreate=#{isautocreate,jdbcType=TINYINT}
+     </if>
+     <if test="displayorder != null">
+      AND DisplayOrder=#{displayorder,jdbcType=INTEGER}
+     </if>
+     <if test="dtoname != null">
+      AND DtoName=#{dtoname,jdbcType=NVARCHAR}
+     </if>
+     <if test="vouchername != null">
+      AND VoucherName=#{vouchername,jdbcType=NVARCHAR}
+     </if>
+     <if test="datatype != null">
+      AND DataType=#{datatype,jdbcType=NVARCHAR}
+     </if>
+     <if test="ismessagecentervisible != null">
+      AND isMessageCenterVisible=#{ismessagecentervisible,jdbcType=TINYINT}
+     </if>
+     <if test="isvouchersearchvisible != null">
+      AND isVoucherSearchVisible=#{isvouchersearchvisible,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion1intercepttype != null">
+      AND prefixion1InterceptType=#{prefixion1intercepttype,jdbcType=INTEGER}
+     </if>
+     <if test="prefixion2intercepttype != null">
+      AND prefixion2InterceptType=#{prefixion2intercepttype,jdbcType=INTEGER}
+     </if>
+     <if test="prefixion3intercepttype != null">
+      AND prefixion3InterceptType=#{prefixion3intercepttype,jdbcType=INTEGER}
+     </if>
+     <if test="isneedworkflow != null">
+      AND IsNeedWorkFlow=#{isneedworkflow,jdbcType=TINYINT}
+     </if>
+     <if test="codemanner != null">
+      AND CodeManner=#{codemanner,jdbcType=INTEGER}
+     </if>
+     <if test="isprefix1readonly != null">
+      AND IsPrefix1ReadOnly=#{isprefix1readonly,jdbcType=INTEGER}
+     </if>
+     <if test="syspropfields != null">
+      AND SysPropFields=#{syspropfields,jdbcType=NVARCHAR}
+     </if>
+     <if test="expressionname != null">
+      AND ExpressionName=#{expressionname,jdbcType=NVARCHAR}
+     </if>
+     <if test="isauditprint != null">
+      AND isAuditPrint=#{isauditprint,jdbcType=TINYINT}
+     </if>
+     <if test="isenablewfemail != null">
+      AND IsEnableWFEmail=#{isenablewfemail,jdbcType=TINYINT}
+     </if>
+     <if test="isneedgzqaudit != null">
+      AND IsNeedGzqAudit=#{isneedgzqaudit,jdbcType=TINYINT}
+     </if>
+     <if test="iscreditcontrol != null">
+      AND IsCreditControl=#{iscreditcontrol,jdbcType=TINYINT}
+     </if>
+     <if test="voucherdatebasis != null">
+      AND voucherDateBasis=#{voucherdatebasis,jdbcType=NVARCHAR}
+     </if>
+     <if test="ishighestpricecontrol != null">
+      AND IsHighestPriceControl=#{ishighestpricecontrol,jdbcType=TINYINT}
+     </if>
+     <if test="islowestpricecontrol != null">
+      AND IsLowestPriceControl=#{islowestpricecontrol,jdbcType=TINYINT}
+     </if>
+     <if test="isoutsourcepricecontrol != null">
+      AND IsOutSourcePriceControl=#{isoutsourcepricecontrol,jdbcType=TINYINT}
+     </if>
+    </where>
+  </select>
+  <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.smvoucherType.SMVoucherTypeBean" >
+    select
+    <include refid="Base_Column_List"/>
+    from SM_VoucherType
+    <where>
+     <if test="code != null">
+      code=#{code,jdbcType=NVARCHAR}
+     </if>
+     <if test="name != null">
+      AND name=#{name,jdbcType=NVARCHAR}
+     </if>
+     <if test="modulename != null">
+      AND moduleName=#{modulename,jdbcType=NVARCHAR}
+     </if>
+     <if test="auditmodule != null">
+      AND AuditModule=#{auditmodule,jdbcType=NVARCHAR}
+     </if>
+     <if test="isautofillbreakpoint != null">
+      AND isautofillbreakpoint=#{isautofillbreakpoint,jdbcType=TINYINT}
+     </if>
+     <if test="iseditable != null">
+      AND iseditable=#{iseditable,jdbcType=TINYINT}
+     </if>
+     <if test="isneedaudit != null">
+      AND isneedaudit=#{isneedaudit,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion1 != null">
+      AND prefixion1=#{prefixion1,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion1length != null">
+      AND prefixion1length=#{prefixion1length,jdbcType=INTEGER}
+     </if>
+     <if test="prefixion1content != null">
+      AND prefixion1content=#{prefixion1content,jdbcType=NVARCHAR}
+     </if>
+     <if test="iscreatorderbyprefixion1 != null">
+      AND iscreatorderbyprefixion1=#{iscreatorderbyprefixion1,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion2 != null">
+      AND prefixion2=#{prefixion2,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion2content != null">
+      AND prefixion2content=#{prefixion2content,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion2length != null">
+      AND prefixion2length=#{prefixion2length,jdbcType=INTEGER}
+     </if>
+     <if test="iscreatorderbyprefixion2 != null">
+      AND iscreatorderbyprefixion2=#{iscreatorderbyprefixion2,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion3 != null">
+      AND prefixion3=#{prefixion3,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion3content != null">
+      AND prefixion3content=#{prefixion3content,jdbcType=NVARCHAR}
+     </if>
+     <if test="prefixion3length != null">
+      AND prefixion3length=#{prefixion3length,jdbcType=INTEGER}
+     </if>
+     <if test="iscreatorderbyprefixion3 != null">
+      AND iscreatorderbyprefixion3=#{iscreatorderbyprefixion3,jdbcType=TINYINT}
+     </if>
+     <if test="separator != null">
+      AND separator=#{separator,jdbcType=NVARCHAR}
+     </if>
+     <if test="serialnolength != null">
+      AND serialnolength=#{serialnolength,jdbcType=INTEGER}
+     </if>
+     <if test="startordenalnumber != null">
+      AND startordenalnumber=#{startordenalnumber,jdbcType=NUMERIC}
+     </if>
+     <if test="disabled != null">
+      AND disabled=#{disabled,jdbcType=TINYINT}
+     </if>
+     <if test="issystem != null">
+      AND issystem=#{issystem,jdbcType=TINYINT}
+     </if>
+     <if test="iscodingvisible != null">
+      AND isCodingVisible=#{iscodingvisible,jdbcType=TINYINT}
+     </if>
+     <if test="isaudingvisible != null">
+      AND isAudingVisible=#{isaudingvisible,jdbcType=TINYINT}
+     </if>
+     <if test="vouchertypealias != null">
+      AND vouchertypealias=#{vouchertypealias,jdbcType=NVARCHAR}
+     </if>
+     <if test="isautocreate != null">
+      AND isautocreate=#{isautocreate,jdbcType=TINYINT}
+     </if>
+     <if test="displayorder != null">
+      AND DisplayOrder=#{displayorder,jdbcType=INTEGER}
+     </if>
+     <if test="dtoname != null">
+      AND DtoName=#{dtoname,jdbcType=NVARCHAR}
+     </if>
+     <if test="vouchername != null">
+      AND VoucherName=#{vouchername,jdbcType=NVARCHAR}
+     </if>
+     <if test="datatype != null">
+      AND DataType=#{datatype,jdbcType=NVARCHAR}
+     </if>
+     <if test="ismessagecentervisible != null">
+      AND isMessageCenterVisible=#{ismessagecentervisible,jdbcType=TINYINT}
+     </if>
+     <if test="isvouchersearchvisible != null">
+      AND isVoucherSearchVisible=#{isvouchersearchvisible,jdbcType=TINYINT}
+     </if>
+     <if test="prefixion1intercepttype != null">
+      AND prefixion1InterceptType=#{prefixion1intercepttype,jdbcType=INTEGER}
+     </if>
+     <if test="prefixion2intercepttype != null">
+      AND prefixion2InterceptType=#{prefixion2intercepttype,jdbcType=INTEGER}
+     </if>
+     <if test="prefixion3intercepttype != null">
+      AND prefixion3InterceptType=#{prefixion3intercepttype,jdbcType=INTEGER}
+     </if>
+     <if test="isneedworkflow != null">
+      AND IsNeedWorkFlow=#{isneedworkflow,jdbcType=TINYINT}
+     </if>
+     <if test="codemanner != null">
+      AND CodeManner=#{codemanner,jdbcType=INTEGER}
+     </if>
+     <if test="isprefix1readonly != null">
+      AND IsPrefix1ReadOnly=#{isprefix1readonly,jdbcType=INTEGER}
+     </if>
+     <if test="syspropfields != null">
+      AND SysPropFields=#{syspropfields,jdbcType=NVARCHAR}
+     </if>
+     <if test="expressionname != null">
+      AND ExpressionName=#{expressionname,jdbcType=NVARCHAR}
+     </if>
+     <if test="isauditprint != null">
+      AND isAuditPrint=#{isauditprint,jdbcType=TINYINT}
+     </if>
+     <if test="isenablewfemail != null">
+      AND IsEnableWFEmail=#{isenablewfemail,jdbcType=TINYINT}
+     </if>
+     <if test="isneedgzqaudit != null">
+      AND IsNeedGzqAudit=#{isneedgzqaudit,jdbcType=TINYINT}
+     </if>
+     <if test="iscreditcontrol != null">
+      AND IsCreditControl=#{iscreditcontrol,jdbcType=TINYINT}
+     </if>
+     <if test="voucherdatebasis != null">
+      AND voucherDateBasis=#{voucherdatebasis,jdbcType=NVARCHAR}
+     </if>
+     <if test="ishighestpricecontrol != null">
+      AND IsHighestPriceControl=#{ishighestpricecontrol,jdbcType=TINYINT}
+     </if>
+     <if test="islowestpricecontrol != null">
+      AND IsLowestPriceControl=#{islowestpricecontrol,jdbcType=TINYINT}
+     </if>
+     <if test="isoutsourcepricecontrol != null">
+      AND IsOutSourcePriceControl=#{isoutsourcepricecontrol,jdbcType=TINYINT}
+     </if>
+    </where>
+  </select>
+</mapper>

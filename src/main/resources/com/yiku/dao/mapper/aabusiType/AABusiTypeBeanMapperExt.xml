@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aabusiType.AABusiTypeBean">
+    <resultMap id="queryBusinessTypeList" type="com.yiku.common.dto.expenseList.BusinessType">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryBusinessTypeByName" resultMap="queryBusinessTypeList">
+        select aa.id, aa.name, aa.code
+        from AA_BusiType aa
+                 left join SM_VoucherTypeToBusinessType smv on aa.id = smv.idbusitype
+                 left join SM_VoucherType smvs
+                           on smv.idvouchertype = smvs.id
+        where smvs.name = '费用单'
+        order by aa.id asc
+    </select>
+</mapper>

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aadepartment.AADepartmentBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aadepartment.AADepartmentBean">
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="isEndNode" property="isendnode" jdbcType="TINYINT"/>
+        <result column="depth" property="depth" jdbcType="TINYINT"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="updatedBy" property="updatedby" jdbcType="NVARCHAR"/>
+        <result column="priuserdefnvc1" property="priuserdefnvc1" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm1" property="priuserdefdecm1" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc2" property="priuserdefnvc2" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm2" property="priuserdefdecm2" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc3" property="priuserdefnvc3" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm3" property="priuserdefdecm3" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc4" property="priuserdefnvc4" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm4" property="priuserdefdecm4" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc5" property="priuserdefnvc5" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm5" property="priuserdefdecm5" jdbcType="DECIMAL"/>
+        <result column="inId" property="inid" jdbcType="NVARCHAR"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="idparent" property="idparent" jdbcType="INTEGER"/>
+        <result column="idMarketingOrgan" property="idmarketingorgan" jdbcType="INTEGER"/>
+        <result column="iddirector" property="iddirector" jdbcType="INTEGER"/>
+        <result column="madeDate" property="madedate" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aadepartment.AADepartmentBean" extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        code
+        , name, isEndNode,
+      depth, disabled, updatedBy,
+      priuserdefnvc1, priuserdefdecm1, priuserdefnvc2,
+      priuserdefdecm2, priuserdefnvc3, priuserdefdecm3,
+      priuserdefnvc4, priuserdefdecm4, priuserdefnvc5,
+      priuserdefdecm5, inId, idparent,
+      idMarketingOrgan, iddirector, madeDate,
+      updated, createdTime
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List" />
+        from AA_Department
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="com.yiku.dao.entity.aadepartment.AADepartmentBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_Department (code, name, isEndNode,
+        depth, disabled, updatedBy,
+        priuserdefnvc1, priuserdefdecm1, priuserdefnvc2,
+        priuserdefdecm2, priuserdefnvc3, priuserdefdecm3,
+        priuserdefnvc4, priuserdefdecm4, priuserdefnvc5,
+        priuserdefdecm5, inId, idparent,
+        idMarketingOrgan, iddirector, madeDate,
+        updated, createdTime, ts
+        )
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{isendnode,jdbcType=TINYINT},
+        #{depth,jdbcType=TINYINT}, #{disabled,jdbcType=TINYINT}, #{updatedby,jdbcType=NVARCHAR},
+        #{priuserdefnvc1,jdbcType=NVARCHAR}, #{priuserdefdecm1,jdbcType=DECIMAL}, #{priuserdefnvc2,jdbcType=NVARCHAR},
+        #{priuserdefdecm2,jdbcType=DECIMAL}, #{priuserdefnvc3,jdbcType=NVARCHAR}, #{priuserdefdecm3,jdbcType=DECIMAL},
+        #{priuserdefnvc4,jdbcType=NVARCHAR}, #{priuserdefdecm4,jdbcType=DECIMAL}, #{priuserdefnvc5,jdbcType=NVARCHAR},
+        #{priuserdefdecm5,jdbcType=DECIMAL}, #{inid,jdbcType=NVARCHAR}, #{idparent,jdbcType=INTEGER},
+        #{idmarketingorgan,jdbcType=INTEGER}, #{iddirector,jdbcType=INTEGER}, #{madedate,jdbcType=TIMESTAMP},
+        #{updated,jdbcType=TIMESTAMP}, #{createdtime,jdbcType=TIMESTAMP}, #{ts,jdbcType=BINARY}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aadepartment.AADepartmentBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_Department
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="isendnode != null">
+                isEndNode,
+            </if>
+            <if test="depth != null">
+                depth,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="updatedby != null">
+                updatedBy,
+            </if>
+            <if test="priuserdefnvc1 != null">
+                priuserdefnvc1,
+            </if>
+            <if test="priuserdefdecm1 != null">
+                priuserdefdecm1,
+            </if>
+            <if test="priuserdefnvc2 != null">
+                priuserdefnvc2,
+            </if>
+            <if test="priuserdefdecm2 != null">
+                priuserdefdecm2,
+            </if>
+            <if test="priuserdefnvc3 != null">
+                priuserdefnvc3,
+            </if>
+            <if test="priuserdefdecm3 != null">
+                priuserdefdecm3,
+            </if>
+            <if test="priuserdefnvc4 != null">
+                priuserdefnvc4,
+            </if>
+            <if test="priuserdefdecm4 != null">
+                priuserdefdecm4,
+            </if>
+            <if test="priuserdefnvc5 != null">
+                priuserdefnvc5,
+            </if>
+            <if test="priuserdefdecm5 != null">
+                priuserdefdecm5,
+            </if>
+            <if test="inid != null">
+                inId,
+            </if>
+            <if test="idparent != null">
+                idparent,
+            </if>
+            <if test="idmarketingorgan != null">
+                idMarketingOrgan,
+            </if>
+            <if test="iddirector != null">
+                iddirector,
+            </if>
+            <if test="madedate != null">
+                madeDate,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="isendnode != null">
+                #{isendnode,jdbcType=TINYINT},
+            </if>
+            <if test="depth != null">
+                #{depth,jdbcType=TINYINT},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="updatedby != null">
+                #{updatedby,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefnvc1 != null">
+                #{priuserdefnvc1,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm1 != null">
+                #{priuserdefdecm1,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc2 != null">
+                #{priuserdefnvc2,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm2 != null">
+                #{priuserdefdecm2,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc3 != null">
+                #{priuserdefnvc3,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm3 != null">
+                #{priuserdefdecm3,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc4 != null">
+                #{priuserdefnvc4,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm4 != null">
+                #{priuserdefdecm4,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc5 != null">
+                #{priuserdefnvc5,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm5 != null">
+                #{priuserdefdecm5,jdbcType=DECIMAL},
+            </if>
+            <if test="inid != null">
+                #{inid,jdbcType=NVARCHAR},
+            </if>
+            <if test="idparent != null">
+                #{idparent,jdbcType=INTEGER},
+            </if>
+            <if test="idmarketingorgan != null">
+                #{idmarketingorgan,jdbcType=INTEGER},
+            </if>
+            <if test="iddirector != null">
+                #{iddirector,jdbcType=INTEGER},
+            </if>
+            <if test="madedate != null">
+                #{madedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                #{updated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aadepartment.AADepartmentBean">
+        select
+        count(*)
+        from AA_Department
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="isendnode != null">
+                AND isEndNode=#{isendnode,jdbcType=TINYINT}
+            </if>
+            <if test="depth != null">
+                AND depth=#{depth,jdbcType=TINYINT}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefnvc1 != null">
+                AND priuserdefnvc1=#{priuserdefnvc1,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm1 != null">
+                AND priuserdefdecm1=#{priuserdefdecm1,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc2 != null">
+                AND priuserdefnvc2=#{priuserdefnvc2,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm2 != null">
+                AND priuserdefdecm2=#{priuserdefdecm2,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc3 != null">
+                AND priuserdefnvc3=#{priuserdefnvc3,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm3 != null">
+                AND priuserdefdecm3=#{priuserdefdecm3,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc4 != null">
+                AND priuserdefnvc4=#{priuserdefnvc4,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm4 != null">
+                AND priuserdefdecm4=#{priuserdefdecm4,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc5 != null">
+                AND priuserdefnvc5=#{priuserdefnvc5,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm5 != null">
+                AND priuserdefdecm5=#{priuserdefdecm5,jdbcType=DECIMAL}
+            </if>
+            <if test="inid != null">
+                AND inId=#{inid,jdbcType=NVARCHAR}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idparent != null">
+                AND idparent=#{idparent,jdbcType=INTEGER}
+            </if>
+            <if test="idmarketingorgan != null">
+                AND idMarketingOrgan=#{idmarketingorgan,jdbcType=INTEGER}
+            </if>
+            <if test="iddirector != null">
+                AND iddirector=#{iddirector,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="searchByEntity" resultMap="BaseResultMap"
+            parameterType="com.yiku.dao.entity.aadepartment.AADepartmentBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_Department
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="isendnode != null">
+                AND isEndNode=#{isendnode,jdbcType=TINYINT}
+            </if>
+            <if test="depth != null">
+                AND depth=#{depth,jdbcType=TINYINT}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefnvc1 != null">
+                AND priuserdefnvc1=#{priuserdefnvc1,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm1 != null">
+                AND priuserdefdecm1=#{priuserdefdecm1,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc2 != null">
+                AND priuserdefnvc2=#{priuserdefnvc2,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm2 != null">
+                AND priuserdefdecm2=#{priuserdefdecm2,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc3 != null">
+                AND priuserdefnvc3=#{priuserdefnvc3,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm3 != null">
+                AND priuserdefdecm3=#{priuserdefdecm3,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc4 != null">
+                AND priuserdefnvc4=#{priuserdefnvc4,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm4 != null">
+                AND priuserdefdecm4=#{priuserdefdecm4,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc5 != null">
+                AND priuserdefnvc5=#{priuserdefnvc5,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm5 != null">
+                AND priuserdefdecm5=#{priuserdefdecm5,jdbcType=DECIMAL}
+            </if>
+            <if test="inid != null">
+                AND inId=#{inid,jdbcType=NVARCHAR}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="idparent != null">
+                AND idparent=#{idparent,jdbcType=INTEGER}
+            </if>
+            <if test="idmarketingorgan != null">
+                AND idMarketingOrgan=#{idmarketingorgan,jdbcType=INTEGER}
+            </if>
+            <if test="iddirector != null">
+                AND iddirector=#{iddirector,jdbcType=INTEGER}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>

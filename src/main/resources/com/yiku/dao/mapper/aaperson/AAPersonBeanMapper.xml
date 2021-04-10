@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.aaperson.AAPersonBean">
+    <resultMap id="BaseResultMap" type="com.yiku.dao.entity.aaperson.AAPersonBean">
+        <result column="code" property="code" jdbcType="NVARCHAR"/>
+        <result column="name" property="name" jdbcType="NVARCHAR"/>
+        <result column="shorthand" property="shorthand" jdbcType="NVARCHAR"/>
+        <result column="nativePlace" property="nativeplace" jdbcType="NVARCHAR"/>
+        <result column="identityNo" property="identityno" jdbcType="NVARCHAR"/>
+        <result column="familyPhoneNo" property="familyphoneno" jdbcType="NVARCHAR"/>
+        <result column="officePhoneNo" property="officephoneno" jdbcType="NVARCHAR"/>
+        <result column="mobilePhoneNo" property="mobilephoneno" jdbcType="NVARCHAR"/>
+        <result column="emailAddr" property="emailaddr" jdbcType="NVARCHAR"/>
+        <result column="qqcode" property="qqcode" jdbcType="NVARCHAR"/>
+        <result column="msnAddr" property="msnaddr" jdbcType="NVARCHAR"/>
+        <result column="uuNo" property="uuno" jdbcType="NVARCHAR"/>
+        <result column="postCode" property="postcode" jdbcType="NVARCHAR"/>
+        <result column="postAddr" property="postaddr" jdbcType="NVARCHAR"/>
+        <result column="isSalesman" property="issalesman" jdbcType="TINYINT"/>
+        <result column="creditDate" property="creditdate" jdbcType="DECIMAL"/>
+        <result column="creditQuantity" property="creditquantity" jdbcType="DECIMAL"/>
+        <result column="aRBalance_Abandon" property="arbalanceAbandon" jdbcType="DECIMAL"/>
+        <result column="aPBalance_Abandon" property="apbalanceAbandon" jdbcType="DECIMAL"/>
+        <result column="disabled" property="disabled" jdbcType="TINYINT"/>
+        <result column="updatedBy" property="updatedby" jdbcType="NVARCHAR"/>
+        <result column="priuserdefnvc1" property="priuserdefnvc1" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm1" property="priuserdefdecm1" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc2" property="priuserdefnvc2" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm2" property="priuserdefdecm2" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc3" property="priuserdefnvc3" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm3" property="priuserdefdecm3" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc4" property="priuserdefnvc4" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm4" property="priuserdefdecm4" jdbcType="DECIMAL"/>
+        <result column="priuserdefnvc5" property="priuserdefnvc5" jdbcType="NVARCHAR"/>
+        <result column="priuserdefdecm5" property="priuserdefdecm5" jdbcType="DECIMAL"/>
+        <result column="IsNavigator" property="isnavigator" jdbcType="TINYINT"/>
+        <result column="IsOperator" property="isoperator" jdbcType="TINYINT"/>
+        <result column="id" property="id" jdbcType="INTEGER"/>
+        <result column="iddepartment" property="iddepartment" jdbcType="INTEGER"/>
+        <result column="idMarketingOrgan" property="idmarketingorgan" jdbcType="INTEGER"/>
+        <result column="education" property="education" jdbcType="INTEGER"/>
+        <result column="gender" property="gender" jdbcType="INTEGER"/>
+        <result column="identificationType" property="identificationtype" jdbcType="INTEGER"/>
+        <result column="position" property="position" jdbcType="INTEGER"/>
+        <result column="birthday" property="birthday" jdbcType="TIMESTAMP"/>
+        <result column="madeDate" property="madedate" jdbcType="TIMESTAMP"/>
+        <result column="updated" property="updated" jdbcType="TIMESTAMP"/>
+        <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP"/>
+        <result column="VisitManage" property="visitmanage" jdbcType="TINYINT"/>
+        <result column="autoCreateOperator" property="autocreateoperator" jdbcType="BIT"/>
+        <result column="personUserType" property="personusertype" jdbcType="INTEGER"/>
+        <result column="idUserGroup" property="idusergroup" jdbcType="INTEGER"/>
+        <result column="AccountBank" property="accountbank" jdbcType="INTEGER"/>
+        <result column="PositionTitle" property="positiontitle" jdbcType="INTEGER"/>
+        <result column="EmployeeCategory" property="employeecategory" jdbcType="INTEGER"/>
+        <result column="BankAccountNo" property="bankaccountno" jdbcType="NVARCHAR"/>
+        <result column="LeaveDate" property="leavedate" jdbcType="TIMESTAMP"/>
+        <result column="EnableSalaryPassword" property="enablesalarypassword" jdbcType="INTEGER"/>
+        <result column="SalaryPassword" property="salarypassword" jdbcType="NVARCHAR"/>
+        <result column="EntryDate" property="entrydate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yiku.dao.entity.aaperson.AAPersonBean" extends="BaseResultMap">
+        <result column="ts" property="ts" jdbcType="BINARY"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        code
+        , name, shorthand,
+      nativePlace, identityNo, familyPhoneNo,
+      officePhoneNo, mobilePhoneNo, emailAddr,
+      qqcode, msnAddr, uuNo,
+      postCode, postAddr, isSalesman,
+      creditDate, creditQuantity, aRBalance_Abandon,
+      aPBalance_Abandon, disabled, updatedBy,
+      priuserdefnvc1, priuserdefdecm1, priuserdefnvc2,
+      priuserdefdecm2, priuserdefnvc3, priuserdefdecm3,
+      priuserdefnvc4, priuserdefdecm4, priuserdefnvc5,
+      priuserdefdecm5, IsNavigator, IsOperator,
+      iddepartment, idMarketingOrgan, education,
+      gender, identificationType, position,
+      birthday, madeDate, updated,
+      createdTime, VisitManage, autoCreateOperator,
+      personUserType, idUserGroup, AccountBank,
+      PositionTitle, EmployeeCategory, BankAccountNo,
+      LeaveDate, EnableSalaryPassword, SalaryPassword,
+      EntryDate
+    </sql>
+    <sql id="Blob_Column_List">
+        ts
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_Person
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <insert id="insert" parameterType="com.yiku.dao.entity.aaperson.AAPersonBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_Person (code, name, shorthand,
+        nativePlace, identityNo, familyPhoneNo,
+        officePhoneNo, mobilePhoneNo, emailAddr,
+        qqcode, msnAddr, uuNo,
+        postCode, postAddr, isSalesman,
+        creditDate, creditQuantity, aRBalance_Abandon,
+        aPBalance_Abandon, disabled, updatedBy,
+        priuserdefnvc1, priuserdefdecm1, priuserdefnvc2,
+        priuserdefdecm2, priuserdefnvc3, priuserdefdecm3,
+        priuserdefnvc4, priuserdefdecm4, priuserdefnvc5,
+        priuserdefdecm5, IsNavigator, IsOperator,
+        iddepartment, idMarketingOrgan, education,
+        gender, identificationType, position,
+        birthday, madeDate, updated,
+        createdTime, VisitManage, autoCreateOperator,
+        personUserType, idUserGroup, AccountBank,
+        PositionTitle, EmployeeCategory, BankAccountNo,
+        LeaveDate, EnableSalaryPassword, SalaryPassword,
+        EntryDate, ts)
+        values (#{code,jdbcType=NVARCHAR}, #{name,jdbcType=NVARCHAR}, #{shorthand,jdbcType=NVARCHAR},
+        #{nativeplace,jdbcType=NVARCHAR}, #{identityno,jdbcType=NVARCHAR}, #{familyphoneno,jdbcType=NVARCHAR},
+        #{officephoneno,jdbcType=NVARCHAR}, #{mobilephoneno,jdbcType=NVARCHAR}, #{emailaddr,jdbcType=NVARCHAR},
+        #{qqcode,jdbcType=NVARCHAR}, #{msnaddr,jdbcType=NVARCHAR}, #{uuno,jdbcType=NVARCHAR},
+        #{postcode,jdbcType=NVARCHAR}, #{postaddr,jdbcType=NVARCHAR}, #{issalesman,jdbcType=TINYINT},
+        #{creditdate,jdbcType=DECIMAL}, #{creditquantity,jdbcType=DECIMAL}, #{arbalanceAbandon,jdbcType=DECIMAL},
+        #{apbalanceAbandon,jdbcType=DECIMAL}, #{disabled,jdbcType=TINYINT}, #{updatedby,jdbcType=NVARCHAR},
+        #{priuserdefnvc1,jdbcType=NVARCHAR}, #{priuserdefdecm1,jdbcType=DECIMAL}, #{priuserdefnvc2,jdbcType=NVARCHAR},
+        #{priuserdefdecm2,jdbcType=DECIMAL}, #{priuserdefnvc3,jdbcType=NVARCHAR}, #{priuserdefdecm3,jdbcType=DECIMAL},
+        #{priuserdefnvc4,jdbcType=NVARCHAR}, #{priuserdefdecm4,jdbcType=DECIMAL}, #{priuserdefnvc5,jdbcType=NVARCHAR},
+        #{priuserdefdecm5,jdbcType=DECIMAL}, #{isnavigator,jdbcType=TINYINT}, #{isoperator,jdbcType=TINYINT},
+        #{iddepartment,jdbcType=INTEGER}, #{idmarketingorgan,jdbcType=INTEGER}, #{education,jdbcType=INTEGER},
+        #{gender,jdbcType=INTEGER}, #{identificationtype,jdbcType=INTEGER}, #{position,jdbcType=INTEGER},
+        #{birthday,jdbcType=TIMESTAMP}, #{madedate,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP},
+        #{createdtime,jdbcType=TIMESTAMP}, #{visitmanage,jdbcType=TINYINT}, #{autocreateoperator,jdbcType=BIT},
+        #{personusertype,jdbcType=INTEGER}, #{idusergroup,jdbcType=INTEGER}, #{accountbank,jdbcType=INTEGER},
+        #{positiontitle,jdbcType=INTEGER}, #{employeecategory,jdbcType=INTEGER}, #{bankaccountno,jdbcType=NVARCHAR},
+        #{leavedate,jdbcType=TIMESTAMP}, #{enablesalarypassword,jdbcType=INTEGER}, #{salarypassword,jdbcType=NVARCHAR},
+        #{entrydate,jdbcType=TIMESTAMP}, #{ts,jdbcType=BINARY})
+    </insert>
+    <insert id="insertSelective" parameterType="com.yiku.dao.entity.aaperson.AAPersonBean">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into AA_Person
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                code,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="shorthand != null">
+                shorthand,
+            </if>
+            <if test="nativeplace != null">
+                nativePlace,
+            </if>
+            <if test="identityno != null">
+                identityNo,
+            </if>
+            <if test="familyphoneno != null">
+                familyPhoneNo,
+            </if>
+            <if test="officephoneno != null">
+                officePhoneNo,
+            </if>
+            <if test="mobilephoneno != null">
+                mobilePhoneNo,
+            </if>
+            <if test="emailaddr != null">
+                emailAddr,
+            </if>
+            <if test="qqcode != null">
+                qqcode,
+            </if>
+            <if test="msnaddr != null">
+                msnAddr,
+            </if>
+            <if test="uuno != null">
+                uuNo,
+            </if>
+            <if test="postcode != null">
+                postCode,
+            </if>
+            <if test="postaddr != null">
+                postAddr,
+            </if>
+            <if test="issalesman != null">
+                isSalesman,
+            </if>
+            <if test="creditdate != null">
+                creditDate,
+            </if>
+            <if test="creditquantity != null">
+                creditQuantity,
+            </if>
+            <if test="arbalanceAbandon != null">
+                aRBalance_Abandon,
+            </if>
+            <if test="apbalanceAbandon != null">
+                aPBalance_Abandon,
+            </if>
+            <if test="disabled != null">
+                disabled,
+            </if>
+            <if test="updatedby != null">
+                updatedBy,
+            </if>
+            <if test="priuserdefnvc1 != null">
+                priuserdefnvc1,
+            </if>
+            <if test="priuserdefdecm1 != null">
+                priuserdefdecm1,
+            </if>
+            <if test="priuserdefnvc2 != null">
+                priuserdefnvc2,
+            </if>
+            <if test="priuserdefdecm2 != null">
+                priuserdefdecm2,
+            </if>
+            <if test="priuserdefnvc3 != null">
+                priuserdefnvc3,
+            </if>
+            <if test="priuserdefdecm3 != null">
+                priuserdefdecm3,
+            </if>
+            <if test="priuserdefnvc4 != null">
+                priuserdefnvc4,
+            </if>
+            <if test="priuserdefdecm4 != null">
+                priuserdefdecm4,
+            </if>
+            <if test="priuserdefnvc5 != null">
+                priuserdefnvc5,
+            </if>
+            <if test="priuserdefdecm5 != null">
+                priuserdefdecm5,
+            </if>
+            <if test="isnavigator != null">
+                IsNavigator,
+            </if>
+            <if test="isoperator != null">
+                IsOperator,
+            </if>
+            <if test="iddepartment != null">
+                iddepartment,
+            </if>
+            <if test="idmarketingorgan != null">
+                idMarketingOrgan,
+            </if>
+            <if test="education != null">
+                education,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="identificationtype != null">
+                identificationType,
+            </if>
+            <if test="position != null">
+                position,
+            </if>
+            <if test="birthday != null">
+                birthday,
+            </if>
+            <if test="madedate != null">
+                madeDate,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+            <if test="createdtime != null">
+                createdTime,
+            </if>
+            <if test="visitmanage != null">
+                VisitManage,
+            </if>
+            <if test="autocreateoperator != null">
+                autoCreateOperator,
+            </if>
+            <if test="personusertype != null">
+                personUserType,
+            </if>
+            <if test="idusergroup != null">
+                idUserGroup,
+            </if>
+            <if test="accountbank != null">
+                AccountBank,
+            </if>
+            <if test="positiontitle != null">
+                PositionTitle,
+            </if>
+            <if test="employeecategory != null">
+                EmployeeCategory,
+            </if>
+            <if test="bankaccountno != null">
+                BankAccountNo,
+            </if>
+            <if test="leavedate != null">
+                LeaveDate,
+            </if>
+            <if test="enablesalarypassword != null">
+                EnableSalaryPassword,
+            </if>
+            <if test="salarypassword != null">
+                SalaryPassword,
+            </if>
+            <if test="entrydate != null">
+                EntryDate,
+            </if>
+            <if test="ts != null">
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="code != null">
+                #{code,jdbcType=NVARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=NVARCHAR},
+            </if>
+            <if test="shorthand != null">
+                #{shorthand,jdbcType=NVARCHAR},
+            </if>
+            <if test="nativeplace != null">
+                #{nativeplace,jdbcType=NVARCHAR},
+            </if>
+            <if test="identityno != null">
+                #{identityno,jdbcType=NVARCHAR},
+            </if>
+            <if test="familyphoneno != null">
+                #{familyphoneno,jdbcType=NVARCHAR},
+            </if>
+            <if test="officephoneno != null">
+                #{officephoneno,jdbcType=NVARCHAR},
+            </if>
+            <if test="mobilephoneno != null">
+                #{mobilephoneno,jdbcType=NVARCHAR},
+            </if>
+            <if test="emailaddr != null">
+                #{emailaddr,jdbcType=NVARCHAR},
+            </if>
+            <if test="qqcode != null">
+                #{qqcode,jdbcType=NVARCHAR},
+            </if>
+            <if test="msnaddr != null">
+                #{msnaddr,jdbcType=NVARCHAR},
+            </if>
+            <if test="uuno != null">
+                #{uuno,jdbcType=NVARCHAR},
+            </if>
+            <if test="postcode != null">
+                #{postcode,jdbcType=NVARCHAR},
+            </if>
+            <if test="postaddr != null">
+                #{postaddr,jdbcType=NVARCHAR},
+            </if>
+            <if test="issalesman != null">
+                #{issalesman,jdbcType=TINYINT},
+            </if>
+            <if test="creditdate != null">
+                #{creditdate,jdbcType=DECIMAL},
+            </if>
+            <if test="creditquantity != null">
+                #{creditquantity,jdbcType=DECIMAL},
+            </if>
+            <if test="arbalanceAbandon != null">
+                #{arbalanceAbandon,jdbcType=DECIMAL},
+            </if>
+            <if test="apbalanceAbandon != null">
+                #{apbalanceAbandon,jdbcType=DECIMAL},
+            </if>
+            <if test="disabled != null">
+                #{disabled,jdbcType=TINYINT},
+            </if>
+            <if test="updatedby != null">
+                #{updatedby,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefnvc1 != null">
+                #{priuserdefnvc1,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm1 != null">
+                #{priuserdefdecm1,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc2 != null">
+                #{priuserdefnvc2,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm2 != null">
+                #{priuserdefdecm2,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc3 != null">
+                #{priuserdefnvc3,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm3 != null">
+                #{priuserdefdecm3,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc4 != null">
+                #{priuserdefnvc4,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm4 != null">
+                #{priuserdefdecm4,jdbcType=DECIMAL},
+            </if>
+            <if test="priuserdefnvc5 != null">
+                #{priuserdefnvc5,jdbcType=NVARCHAR},
+            </if>
+            <if test="priuserdefdecm5 != null">
+                #{priuserdefdecm5,jdbcType=DECIMAL},
+            </if>
+            <if test="isnavigator != null">
+                #{isnavigator,jdbcType=TINYINT},
+            </if>
+            <if test="isoperator != null">
+                #{isoperator,jdbcType=TINYINT},
+            </if>
+            <if test="iddepartment != null">
+                #{iddepartment,jdbcType=INTEGER},
+            </if>
+            <if test="idmarketingorgan != null">
+                #{idmarketingorgan,jdbcType=INTEGER},
+            </if>
+            <if test="education != null">
+                #{education,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="identificationtype != null">
+                #{identificationtype,jdbcType=INTEGER},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=INTEGER},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=TIMESTAMP},
+            </if>
+            <if test="madedate != null">
+                #{madedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                #{updated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createdtime != null">
+                #{createdtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="visitmanage != null">
+                #{visitmanage,jdbcType=TINYINT},
+            </if>
+            <if test="autocreateoperator != null">
+                #{autocreateoperator,jdbcType=BIT},
+            </if>
+            <if test="personusertype != null">
+                #{personusertype,jdbcType=INTEGER},
+            </if>
+            <if test="idusergroup != null">
+                #{idusergroup,jdbcType=INTEGER},
+            </if>
+            <if test="accountbank != null">
+                #{accountbank,jdbcType=INTEGER},
+            </if>
+            <if test="positiontitle != null">
+                #{positiontitle,jdbcType=INTEGER},
+            </if>
+            <if test="employeecategory != null">
+                #{employeecategory,jdbcType=INTEGER},
+            </if>
+            <if test="bankaccountno != null">
+                #{bankaccountno,jdbcType=NVARCHAR},
+            </if>
+            <if test="leavedate != null">
+                #{leavedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enablesalarypassword != null">
+                #{enablesalarypassword,jdbcType=INTEGER},
+            </if>
+            <if test="salarypassword != null">
+                #{salarypassword,jdbcType=NVARCHAR},
+            </if>
+            <if test="entrydate != null">
+                #{entrydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ts != null">
+                #{ts,jdbcType=BINARY},
+            </if>
+        </trim>
+    </insert>
+    <select id="searchByEntityCount" resultType="java.lang.Integer"
+            parameterType="com.yiku.dao.entity.aaperson.AAPersonBean">
+        select
+        count(*)
+        from AA_Person
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="shorthand != null">
+                AND shorthand=#{shorthand,jdbcType=NVARCHAR}
+            </if>
+            <if test="nativeplace != null">
+                AND nativePlace=#{nativeplace,jdbcType=NVARCHAR}
+            </if>
+            <if test="identityno != null">
+                AND identityNo=#{identityno,jdbcType=NVARCHAR}
+            </if>
+            <if test="familyphoneno != null">
+                AND familyPhoneNo=#{familyphoneno,jdbcType=NVARCHAR}
+            </if>
+            <if test="officephoneno != null">
+                AND officePhoneNo=#{officephoneno,jdbcType=NVARCHAR}
+            </if>
+            <if test="mobilephoneno != null">
+                AND mobilePhoneNo=#{mobilephoneno,jdbcType=NVARCHAR}
+            </if>
+            <if test="emailaddr != null">
+                AND emailAddr=#{emailaddr,jdbcType=NVARCHAR}
+            </if>
+            <if test="qqcode != null">
+                AND qqcode=#{qqcode,jdbcType=NVARCHAR}
+            </if>
+            <if test="msnaddr != null">
+                AND msnAddr=#{msnaddr,jdbcType=NVARCHAR}
+            </if>
+            <if test="uuno != null">
+                AND uuNo=#{uuno,jdbcType=NVARCHAR}
+            </if>
+            <if test="postcode != null">
+                AND postCode=#{postcode,jdbcType=NVARCHAR}
+            </if>
+            <if test="postaddr != null">
+                AND postAddr=#{postaddr,jdbcType=NVARCHAR}
+            </if>
+            <if test="issalesman != null">
+                AND isSalesman=#{issalesman,jdbcType=TINYINT}
+            </if>
+            <if test="creditdate != null">
+                AND creditDate=#{creditdate,jdbcType=DECIMAL}
+            </if>
+            <if test="creditquantity != null">
+                AND creditQuantity=#{creditquantity,jdbcType=DECIMAL}
+            </if>
+            <if test="arbalanceAbandon != null">
+                AND aRBalance_Abandon=#{arbalanceAbandon,jdbcType=DECIMAL}
+            </if>
+            <if test="apbalanceAbandon != null">
+                AND aPBalance_Abandon=#{apbalanceAbandon,jdbcType=DECIMAL}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefnvc1 != null">
+                AND priuserdefnvc1=#{priuserdefnvc1,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm1 != null">
+                AND priuserdefdecm1=#{priuserdefdecm1,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc2 != null">
+                AND priuserdefnvc2=#{priuserdefnvc2,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm2 != null">
+                AND priuserdefdecm2=#{priuserdefdecm2,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc3 != null">
+                AND priuserdefnvc3=#{priuserdefnvc3,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm3 != null">
+                AND priuserdefdecm3=#{priuserdefdecm3,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc4 != null">
+                AND priuserdefnvc4=#{priuserdefnvc4,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm4 != null">
+                AND priuserdefdecm4=#{priuserdefdecm4,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc5 != null">
+                AND priuserdefnvc5=#{priuserdefnvc5,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm5 != null">
+                AND priuserdefdecm5=#{priuserdefdecm5,jdbcType=DECIMAL}
+            </if>
+            <if test="isnavigator != null">
+                AND IsNavigator=#{isnavigator,jdbcType=TINYINT}
+            </if>
+            <if test="isoperator != null">
+                AND IsOperator=#{isoperator,jdbcType=TINYINT}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="iddepartment != null">
+                AND iddepartment=#{iddepartment,jdbcType=INTEGER}
+            </if>
+            <if test="idmarketingorgan != null">
+                AND idMarketingOrgan=#{idmarketingorgan,jdbcType=INTEGER}
+            </if>
+            <if test="education != null">
+                AND education=#{education,jdbcType=INTEGER}
+            </if>
+            <if test="gender != null">
+                AND gender=#{gender,jdbcType=INTEGER}
+            </if>
+            <if test="identificationtype != null">
+                AND identificationType=#{identificationtype,jdbcType=INTEGER}
+            </if>
+            <if test="position != null">
+                AND position=#{position,jdbcType=INTEGER}
+            </if>
+            <if test="birthday != null">
+                AND birthday=#{birthday,jdbcType=TIMESTAMP}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="visitmanage != null">
+                AND VisitManage=#{visitmanage,jdbcType=TINYINT}
+            </if>
+            <if test="autocreateoperator != null">
+                AND autoCreateOperator=#{autocreateoperator,jdbcType=BIT}
+            </if>
+            <if test="personusertype != null">
+                AND personUserType=#{personusertype,jdbcType=INTEGER}
+            </if>
+            <if test="idusergroup != null">
+                AND idUserGroup=#{idusergroup,jdbcType=INTEGER}
+            </if>
+            <if test="accountbank != null">
+                AND AccountBank=#{accountbank,jdbcType=INTEGER}
+            </if>
+            <if test="positiontitle != null">
+                AND PositionTitle=#{positiontitle,jdbcType=INTEGER}
+            </if>
+            <if test="employeecategory != null">
+                AND EmployeeCategory=#{employeecategory,jdbcType=INTEGER}
+            </if>
+            <if test="bankaccountno != null">
+                AND BankAccountNo=#{bankaccountno,jdbcType=NVARCHAR}
+            </if>
+            <if test="leavedate != null">
+                AND LeaveDate=#{leavedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="enablesalarypassword != null">
+                AND EnableSalaryPassword=#{enablesalarypassword,jdbcType=INTEGER}
+            </if>
+            <if test="salarypassword != null">
+                AND SalaryPassword=#{salarypassword,jdbcType=NVARCHAR}
+            </if>
+            <if test="entrydate != null">
+                AND EntryDate=#{entrydate,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+    <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.aaperson.AAPersonBean">
+        select
+        <include refid="Base_Column_List"/>
+        from AA_Person
+        <where>
+            <if test="code != null">
+                code=#{code,jdbcType=NVARCHAR}
+            </if>
+            <if test="name != null">
+                AND name=#{name,jdbcType=NVARCHAR}
+            </if>
+            <if test="shorthand != null">
+                AND shorthand=#{shorthand,jdbcType=NVARCHAR}
+            </if>
+            <if test="nativeplace != null">
+                AND nativePlace=#{nativeplace,jdbcType=NVARCHAR}
+            </if>
+            <if test="identityno != null">
+                AND identityNo=#{identityno,jdbcType=NVARCHAR}
+            </if>
+            <if test="familyphoneno != null">
+                AND familyPhoneNo=#{familyphoneno,jdbcType=NVARCHAR}
+            </if>
+            <if test="officephoneno != null">
+                AND officePhoneNo=#{officephoneno,jdbcType=NVARCHAR}
+            </if>
+            <if test="mobilephoneno != null">
+                AND mobilePhoneNo=#{mobilephoneno,jdbcType=NVARCHAR}
+            </if>
+            <if test="emailaddr != null">
+                AND emailAddr=#{emailaddr,jdbcType=NVARCHAR}
+            </if>
+            <if test="qqcode != null">
+                AND qqcode=#{qqcode,jdbcType=NVARCHAR}
+            </if>
+            <if test="msnaddr != null">
+                AND msnAddr=#{msnaddr,jdbcType=NVARCHAR}
+            </if>
+            <if test="uuno != null">
+                AND uuNo=#{uuno,jdbcType=NVARCHAR}
+            </if>
+            <if test="postcode != null">
+                AND postCode=#{postcode,jdbcType=NVARCHAR}
+            </if>
+            <if test="postaddr != null">
+                AND postAddr=#{postaddr,jdbcType=NVARCHAR}
+            </if>
+            <if test="issalesman != null">
+                AND isSalesman=#{issalesman,jdbcType=TINYINT}
+            </if>
+            <if test="creditdate != null">
+                AND creditDate=#{creditdate,jdbcType=DECIMAL}
+            </if>
+            <if test="creditquantity != null">
+                AND creditQuantity=#{creditquantity,jdbcType=DECIMAL}
+            </if>
+            <if test="arbalanceAbandon != null">
+                AND aRBalance_Abandon=#{arbalanceAbandon,jdbcType=DECIMAL}
+            </if>
+            <if test="apbalanceAbandon != null">
+                AND aPBalance_Abandon=#{apbalanceAbandon,jdbcType=DECIMAL}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled,jdbcType=TINYINT}
+            </if>
+            <if test="updatedby != null">
+                AND updatedBy=#{updatedby,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefnvc1 != null">
+                AND priuserdefnvc1=#{priuserdefnvc1,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm1 != null">
+                AND priuserdefdecm1=#{priuserdefdecm1,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc2 != null">
+                AND priuserdefnvc2=#{priuserdefnvc2,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm2 != null">
+                AND priuserdefdecm2=#{priuserdefdecm2,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc3 != null">
+                AND priuserdefnvc3=#{priuserdefnvc3,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm3 != null">
+                AND priuserdefdecm3=#{priuserdefdecm3,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc4 != null">
+                AND priuserdefnvc4=#{priuserdefnvc4,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm4 != null">
+                AND priuserdefdecm4=#{priuserdefdecm4,jdbcType=DECIMAL}
+            </if>
+            <if test="priuserdefnvc5 != null">
+                AND priuserdefnvc5=#{priuserdefnvc5,jdbcType=NVARCHAR}
+            </if>
+            <if test="priuserdefdecm5 != null">
+                AND priuserdefdecm5=#{priuserdefdecm5,jdbcType=DECIMAL}
+            </if>
+            <if test="isnavigator != null">
+                AND IsNavigator=#{isnavigator,jdbcType=TINYINT}
+            </if>
+            <if test="isoperator != null">
+                AND IsOperator=#{isoperator,jdbcType=TINYINT}
+            </if>
+            <if test="id != null">
+                AND id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="iddepartment != null">
+                AND iddepartment=#{iddepartment,jdbcType=INTEGER}
+            </if>
+            <if test="idmarketingorgan != null">
+                AND idMarketingOrgan=#{idmarketingorgan,jdbcType=INTEGER}
+            </if>
+            <if test="education != null">
+                AND education=#{education,jdbcType=INTEGER}
+            </if>
+            <if test="gender != null">
+                AND gender=#{gender,jdbcType=INTEGER}
+            </if>
+            <if test="identificationtype != null">
+                AND identificationType=#{identificationtype,jdbcType=INTEGER}
+            </if>
+            <if test="position != null">
+                AND position=#{position,jdbcType=INTEGER}
+            </if>
+            <if test="birthday != null">
+                AND birthday=#{birthday,jdbcType=TIMESTAMP}
+            </if>
+            <if test="madedate != null">
+                AND madeDate=#{madedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="updated != null">
+                AND updated=#{updated,jdbcType=TIMESTAMP}
+            </if>
+            <if test="createdtime != null">
+                AND createdTime=#{createdtime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="visitmanage != null">
+                AND VisitManage=#{visitmanage,jdbcType=TINYINT}
+            </if>
+            <if test="autocreateoperator != null">
+                AND autoCreateOperator=#{autocreateoperator,jdbcType=BIT}
+            </if>
+            <if test="personusertype != null">
+                AND personUserType=#{personusertype,jdbcType=INTEGER}
+            </if>
+            <if test="idusergroup != null">
+                AND idUserGroup=#{idusergroup,jdbcType=INTEGER}
+            </if>
+            <if test="accountbank != null">
+                AND AccountBank=#{accountbank,jdbcType=INTEGER}
+            </if>
+            <if test="positiontitle != null">
+                AND PositionTitle=#{positiontitle,jdbcType=INTEGER}
+            </if>
+            <if test="employeecategory != null">
+                AND EmployeeCategory=#{employeecategory,jdbcType=INTEGER}
+            </if>
+            <if test="bankaccountno != null">
+                AND BankAccountNo=#{bankaccountno,jdbcType=NVARCHAR}
+            </if>
+            <if test="leavedate != null">
+                AND LeaveDate=#{leavedate,jdbcType=TIMESTAMP}
+            </if>
+            <if test="enablesalarypassword != null">
+                AND EnableSalaryPassword=#{enablesalarypassword,jdbcType=INTEGER}
+            </if>
+            <if test="salarypassword != null">
+                AND SalaryPassword=#{salarypassword,jdbcType=NVARCHAR}
+            </if>
+            <if test="entrydate != null">
+                AND EntryDate=#{entrydate,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>

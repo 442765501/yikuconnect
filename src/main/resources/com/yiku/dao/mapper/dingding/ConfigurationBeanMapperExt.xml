@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.dingding.ConfigurationBean">
+
+
+    <resultMap id="queryConfiguration" type="com.yiku.common.dto.dingding.DingdingReqDTO">
+        <result column="corpId" property="corpId" jdbcType="VARCHAR"/>
+        <result column="customKey" property="customKey" jdbcType="VARCHAR"/>
+        <result column="secret" property="secret" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryConfigurationList" resultMap="queryConfiguration">
+        select corpId, customKey, secret
+        from configuration
+        where isdelete = 0
+          and status = 0
+          and parentId = 1
+    </select>
+
+
+    <select id="queryConfigurationListByKey" resultMap="queryConfiguration" parameterType="java.lang.String">
+        select corpId, secret,customkey
+        from configuration
+        where customkey = #{customKey}
+          and isdelete = 0
+          and status = 0
+    </select>
+
+    <resultMap id="getConfiguration" type="com.yiku.common.dto.dingding.DingdingReqDTO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="corpId" property="corpId" jdbcType="VARCHAR"/>
+        <result column="customKey" property="customKey" jdbcType="VARCHAR"/>
+        <result column="secret" property="secret" jdbcType="VARCHAR"/>
+        <result column="parentId" property="parentId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="queryConfigurationItemByKey" resultMap="getConfiguration" parameterType="java.lang.String">
+        select co.id,
+               co.corpId,
+               co.secret,
+               co.customKey,
+               co.parentId
+        FROM configuration c,
+             configuration co
+        where co.parentId = c.id
+          and co.customKey = #{customKey}
+          and co.isdelete = 0
+          and co.status = 0
+    </select>
+
+</mapper>

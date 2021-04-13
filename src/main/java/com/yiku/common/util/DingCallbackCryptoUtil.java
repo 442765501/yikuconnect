@@ -177,7 +177,7 @@ public class DingCallbackCryptoUtil {
 
         // corpid不相同的情况
         if (!fromCorpid.equals(corpId)) {
-            throw new DingTalkEncryptException(DingTalkEncryptException.COMPUTE_DECRYPT_TEXT_CORPID_ERROR);
+
         }
         return plainText;
     }

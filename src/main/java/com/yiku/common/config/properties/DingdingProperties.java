@@ -24,12 +24,6 @@ public class DingdingProperties {
     private String encodingAesKey;
 
     /**
-     * dingding.corpId
-     */
-    @Value("${dingding.corpId}")
-    private String corpId;
-
-    /**
      * dingding.url
      */
     @Value("${dingding.url}")
@@ -52,23 +46,6 @@ public class DingdingProperties {
     @Value("${dingding.callBackUrl}")
     private String callBackUrl;
 
-    /**
-     * dingding.corpIdForSan
-     */
-    @Value("${dingding.corpIdForSan}")
-    private String corpIdForSan;
-
-    /**
-     * dingding.corpIdForSan
-     */
-    @Value("${dingding.customKey}")
-    private String customKey;
-
-    /**
-     * dingding.corpIdForSan
-     */
-    @Value("${dingding.customSecret}")
-    private String customSecret;
 
 
 }

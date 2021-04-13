@@ -21,7 +21,7 @@ public class DingdingRoleDTO implements Serializable {
     private String group_name;
 
     /**
-     *角色ID
+     *角色组ID
      */
     private String groupId;
 

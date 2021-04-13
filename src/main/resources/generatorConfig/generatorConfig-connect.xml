@@ -22,7 +22,7 @@
 
 
         <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-                        connectionURL="jdbc:sqlserver://172.18.1.46:1433;DatabaseName=UFTData709654_000001" userId="sa"
+                        connectionURL="jdbc:sqlserver://172.18.1.46:1433;DatabaseName=YKdingding" userId="sa"
                         password="zjyk123456">
         </jdbcConnection>
 
@@ -30,18 +30,18 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.yiku.dao.entity.aabankAccount"
+        <javaModelGenerator targetPackage="com.yiku.dao.entity.dingding"
                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.yiku.dao.mapper.aabankAccount"
+        <sqlMapGenerator targetPackage="com.yiku.dao.mapper.dingding"
                          targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <table tableName="AA_BankAccount" domainObjectName="AABankAccountBean"
+        <table tableName="configuration" domainObjectName="ConfigurationBean"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

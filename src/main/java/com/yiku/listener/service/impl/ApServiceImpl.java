@@ -1,15 +1,18 @@
 package com.yiku.listener.service.impl;
 
-import com.dingtalk.api.response.OapiCallBackRegisterCallBackResponse;
 import com.yiku.common.constant.FinalDatas;
 import com.yiku.common.dto.APIResultDTO;
+import com.yiku.common.dto.dingding.DingdingReqDTO;
 import com.yiku.common.dto.dingding.DingdingResDTO;
+import com.yiku.dao.entity.aabankAccount.AABankAccountBean;
+import com.yiku.dao.entity.dingding.ConfigurationBean;
+import com.yiku.dao.framework.inf.YiKuDAO;
 import com.yiku.listener.service.ApService;
 import com.yiku.service.dingding.DingdingService;
-import com.yiku.service.dingding.DingdingTestService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -22,7 +25,17 @@ import java.util.concurrent.Executors;
 public class ApServiceImpl implements ApService {
 
     @Resource
-    DingdingTestService dingdingTestService;
+    DingdingService dingdingService;
+
+    private YiKuDAO<ConfigurationBean, Integer> configurationBeanDAO;
+
+
+    @Resource
+    public void setAaBankAccountBeanDAO(YiKuDAO<ConfigurationBean, Integer> configurationBeanDAO) {
+        this.configurationBeanDAO = configurationBeanDAO;
+        this.configurationBeanDAO.setPerfix(ConfigurationBean.class.getName());
+    }
+
 
     @Override
     public void start() {
@@ -40,18 +53,21 @@ public class ApServiceImpl implements ApService {
         @Override
         public void run() {
             try {
-                APIResultDTO<DingdingResDTO> dingdingQueryDTO = dingdingTestService.queryDingdingForRegister();
-                DingdingResDTO dingdingQueryResDTO = dingdingQueryDTO.getData();
-                //判断是否已经注册
-                if (FinalDatas.DEFALUT_ZERO == Integer.valueOf(dingdingQueryResDTO.getErrcode()) && FinalDatas.SUCCESS_LOWER.equalsIgnoreCase(dingdingQueryResDTO.getErrmsg())) {
-                    APIResultDTO<DingdingResDTO> dingdingDeleteDTO = dingdingTestService.deleteDingdingForRegister();
-                    DingdingResDTO dingdingDeleteResDTO = dingdingDeleteDTO.getData();
-                    //判断是否已经删除
-                    if (FinalDatas.DEFALUT_ZERO == Integer.valueOf(dingdingDeleteResDTO.getErrcode()) && FinalDatas.SUCCESS_LOWER.equalsIgnoreCase(dingdingDeleteResDTO.getErrmsg())) {
-                        dingdingTestService.registerDingding();
+                List<DingdingReqDTO> queryConfigurationList = configurationBeanDAO.executeListMethod("", "queryConfigurationList", DingdingReqDTO.class);
+                for (DingdingReqDTO dingdingReqDTO : queryConfigurationList) {
+                    APIResultDTO<DingdingResDTO> dingdingQueryDTO = dingdingService.queryDingdingForRegister(dingdingReqDTO);
+                    DingdingResDTO dingdingQueryResDTO = dingdingQueryDTO.getData();
+                    //判断是否已经注册
+                    if (FinalDatas.DEFALUT_ZERO == Integer.valueOf(dingdingQueryResDTO.getErrcode()) && FinalDatas.SUCCESS_LOWER.equalsIgnoreCase(dingdingQueryResDTO.getErrmsg())) {
+                        APIResultDTO<DingdingResDTO> dingdingDeleteDTO = dingdingService.deleteDingdingForRegister(dingdingReqDTO);
+                        DingdingResDTO dingdingDeleteResDTO = dingdingDeleteDTO.getData();
+                        //判断是否已经删除
+                        if (FinalDatas.DEFALUT_ZERO == Integer.valueOf(dingdingDeleteResDTO.getErrcode()) && FinalDatas.SUCCESS_LOWER.equalsIgnoreCase(dingdingDeleteResDTO.getErrmsg())) {
+                            dingdingService.registerDingding(dingdingReqDTO);
+                        }
+                    } else {
+                        dingdingService.registerDingding(dingdingReqDTO);
                     }
-                } else {
-                    dingdingTestService.registerDingding();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

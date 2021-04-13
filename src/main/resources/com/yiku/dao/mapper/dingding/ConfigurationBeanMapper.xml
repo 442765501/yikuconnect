@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.dingding.ConfigurationBean" >
+  <resultMap id="BaseResultMap" type="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="corpId" property="corpid" jdbcType="VARCHAR" />
+    <result column="customKey" property="customkey" jdbcType="VARCHAR" />
+    <result column="secret" property="secret" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, corpId, customKey, secret, parentId, isdelete, status, createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from configuration 
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from configuration 
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into configuration  (corpId, customKey, secret, 
+      parentId, isdelete, status, 
+      createTime)
+    values (#{corpid,jdbcType=VARCHAR}, #{customkey,jdbcType=VARCHAR}, #{secret,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into configuration 
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="corpid != null" >
+        corpId,
+      </if>
+      <if test="customkey != null" >
+        customKey,
+      </if>
+      <if test="secret != null" >
+        secret,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="corpid != null" >
+        #{corpid,jdbcType=VARCHAR},
+      </if>
+      <if test="customkey != null" >
+        #{customkey,jdbcType=VARCHAR},
+      </if>
+      <if test="secret != null" >
+        #{secret,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    update configuration 
+    <set >
+      <if test="corpid != null" >
+        corpId = #{corpid,jdbcType=VARCHAR},
+      </if>
+      <if test="customkey != null" >
+        customKey = #{customkey,jdbcType=VARCHAR},
+      </if>
+      <if test="secret != null" >
+        secret = #{secret,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    update configuration 
+    set corpId = #{corpid,jdbcType=VARCHAR},
+      customKey = #{customkey,jdbcType=VARCHAR},
+      secret = #{secret,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="searchByEntityCount" resultType="java.lang.Integer" parameterType="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    select
+    count(*)
+    from configuration 
+    <where>
+     <if test="corpid != null">
+      corpId=#{corpid,jdbcType=VARCHAR}
+     </if>
+     <if test="customkey != null">
+      AND customKey=#{customkey,jdbcType=VARCHAR}
+     </if>
+     <if test="secret != null">
+      AND secret=#{secret,jdbcType=VARCHAR}
+     </if>
+     <if test="parentid != null">
+      AND parentId=#{parentid,jdbcType=INTEGER}
+     </if>
+     <if test="isdelete != null">
+      AND isdelete=#{isdelete,jdbcType=VARCHAR}
+     </if>
+     <if test="status != null">
+      AND status=#{status,jdbcType=VARCHAR}
+     </if>
+     <if test="createtime != null">
+      AND createTime=#{createtime,jdbcType=TIMESTAMP}
+     </if>
+    </where>
+  </select>
+  <select id="searchByEntity" resultMap="BaseResultMap" parameterType="com.yiku.dao.entity.dingding.ConfigurationBean" >
+    select
+    <include refid="Base_Column_List"/>
+    from configuration 
+    <where>
+     <if test="corpid != null">
+      corpId=#{corpid,jdbcType=VARCHAR}
+     </if>
+     <if test="customkey != null">
+      AND customKey=#{customkey,jdbcType=VARCHAR}
+     </if>
+     <if test="secret != null">
+      AND secret=#{secret,jdbcType=VARCHAR}
+     </if>
+     <if test="parentid != null">
+      AND parentId=#{parentid,jdbcType=INTEGER}
+     </if>
+     <if test="isdelete != null">
+      AND isdelete=#{isdelete,jdbcType=VARCHAR}
+     </if>
+     <if test="status != null">
+      AND status=#{status,jdbcType=VARCHAR}
+     </if>
+     <if test="createtime != null">
+      AND createTime=#{createtime,jdbcType=TIMESTAMP}
+     </if>
+    </where>
+  </select>
+</mapper>

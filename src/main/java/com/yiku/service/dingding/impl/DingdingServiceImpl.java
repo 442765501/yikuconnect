@@ -17,6 +17,7 @@ import com.yiku.dao.entity.dingding.ConfigurationBean;
 import com.yiku.dao.framework.inf.YiKuDAO;
 import com.yiku.service.dingding.DingdingService;
 import com.yiku.service.tsum.TsumService;
+import com.yiku.service.ueight.UeightService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -39,6 +40,9 @@ public class DingdingServiceImpl implements DingdingService {
 
     @Resource
     TsumService tsumService;
+
+    @Resource
+    UeightService ueightService;
 
     private YiKuDAO<ConfigurationBean, Integer> configurationBeanDAO;
 
@@ -163,9 +167,10 @@ public class DingdingServiceImpl implements DingdingService {
     }
 
     @Override
-    public APIResultDTO<DingdingResDTO> getProcessinstance(String processInstanceId) {
+    public APIResultDTO<DingdingResDTO> getProcessinstance(String processInstanceId,String customkey,String type) {
         try {
-            APIResultDTO<String> tokenResultDTO = getToken();//获取token
+            DingdingReqDTO dingdingReqDTO= configurationBeanDAO.executeSelectOneMethod(customkey, "queryConfigurationListByKey", DingdingReqDTO.class);
+            APIResultDTO<String> tokenResultDTO = getTokenForThird(dingdingReqDTO.getCorpId(),dingdingReqDTO.getCustomKey(),dingdingReqDTO.getSecret());//获取token
             String token = tokenResultDTO.getData();
             DingTalkClient client = new DefaultDingTalkClient(dingdingProperties.getUrl() + "/topapi/processinstance/get");
             OapiProcessinstanceGetRequest req = new OapiProcessinstanceGetRequest();
@@ -177,6 +182,13 @@ public class DingdingServiceImpl implements DingdingService {
             String processInstance = dingdingResDTO.getProcess_instance();
             DingdingProcessDTO dingdingProcessDTO = JSONObject.parseObject(processInstance, DingdingProcessDTO.class);
             if (null != dingdingProcessDTO) {
+                if("start".equals(type)){
+                    //调用U8完成新增
+                    APIResultDTO<Integer> integerAPIResultDTO = ueightService.addUeight(dingdingProcessDTO);
+                    if(integerAPIResultDTO.isFlag()){
+                        LogUtil.info("{}", "新增成功");
+                    }
+                }
                 List<DingdingFormDTO> formComponentValues = dingdingProcessDTO.getForm_component_values();
                 tsumService.getTsumExpenseItem(formComponentValues);
             }

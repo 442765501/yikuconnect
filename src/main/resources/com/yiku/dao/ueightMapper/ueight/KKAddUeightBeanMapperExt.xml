@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yiku.dao.entity.ueight.KKAddUeightBean" >
+
+    <insert id="insertUeight" parameterType="com.yiku.common.dto.ueight.UeightReqDTO">
+        insert into KK_AddUeight (userName, deptName, ExpenseDetails,
+        createTime, url, status,
+        isdelete, userId, title
+        )
+        values (#{username,jdbcType=VARCHAR}, #{deptname,jdbcType=VARCHAR}, #{expensedetails,jdbcType=NVARCHAR},
+        #{createtime,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+        #{isdelete,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>

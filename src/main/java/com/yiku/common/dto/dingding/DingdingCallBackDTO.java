@@ -22,6 +22,11 @@ public class DingdingCallBackDTO implements Serializable {
     private String CorpId;
 
     /**
+     * 业务id
+     */
+    private String processInstanceId;
+
+    /**
      * 事件
      */
     private String EventType;
@@ -40,5 +45,10 @@ public class DingdingCallBackDTO implements Serializable {
      * 时间戳
      */
     private String TimeStamp;
+
+    /**
+     * 类型
+     */
+    private String type;
 
 }

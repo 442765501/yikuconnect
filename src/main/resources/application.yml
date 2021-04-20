@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    tsum:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://172.18.1.46:1433;DatabaseName=YKdingding
+      username: sa
+      password: zjyk123456
+    ueight:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://172.18.1.55:1433;DatabaseName=UFDATA_003_2021
+      username: sa
+      password: 0987654

@@ -14,7 +14,6 @@
         from configuration
         where isdelete = 0
           and status = 0
-          and parentId = 1
     </select>
 
 

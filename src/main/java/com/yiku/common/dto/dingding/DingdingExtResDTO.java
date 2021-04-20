@@ -23,4 +23,9 @@ public class DingdingExtResDTO implements Serializable {
      * key
      */
     private String key;
+
+    /**
+     * value
+     */
+    private String value;
 }

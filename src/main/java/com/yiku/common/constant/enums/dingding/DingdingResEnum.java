@@ -35,6 +35,16 @@ public enum DingdingResEnum {
 
     AMOUNTOF_MONEY("金额", "AMOUNTOF_MONEY"),
 
+    USERNAME("姓名","USERNAME"),
+
+    EXPENSE_DETAILS("费用明细","EXPENSE_DETAILS"),
+
+    PURPOSE("用途","PURPOSE"),
+
+    DEPTNAME("所在部门","DEPTNAME"),
+
+    PICTURE("图片","PICTURE"),
+
     TAX_AMOUNT("税额", "TAX_AMOUNT"),
 
     AMOUNT_INCLUDING_TAX("含税金额", "AMOUNT_INCLUDING_TAX"),

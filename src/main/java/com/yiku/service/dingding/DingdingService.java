@@ -60,7 +60,7 @@ public interface DingdingService {
     /**
      * 获取审批实例详情
      */
-    APIResultDTO<DingdingResDTO> getProcessinstance(String processInstanceId);
+    APIResultDTO<DingdingResDTO> getProcessinstance(String processInstanceId,String customkey,String type);
 
     //--------------toExamine end ------------
 }

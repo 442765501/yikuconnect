@@ -142,7 +142,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <configurationFile>src/main/resources/generatorConfig/generatorConfig-connect.xml
+                    <configurationFile>src/main/resources/generatorConfig/generatorConfig_ueight.xml
                     </configurationFile>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>

@@ -254,7 +254,6 @@ public class TsumServiceImpl implements TsumService {
         return null;
     }
 
-    @Override
     public APIResultDTO<String> parameterToExamine(TsumParameterReqDTO tsumParameterReqDTO) {
         OpenAPI openAPI = new OpenAPI();
         try {

@@ -26,11 +26,6 @@ public interface TsumService {
      */
     APIResultDTO<String>getTsumExpenseItem(List<DingdingFormDTO> dingdingFormDTOS);
 
-    /**
-     *
-     * @return
-     */
-    APIResultDTO<String> parameterToExamine(TsumParameterReqDTO tsumParameterReqDTO);
 
 
 }

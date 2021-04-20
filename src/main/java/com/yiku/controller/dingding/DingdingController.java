@@ -55,7 +55,6 @@ public class DingdingController extends BaseController {
             String decryptMsg = callbackCrypto.getDecryptMsg(signature, timestamp, nonce, encryptMsg);
 
             // 3. 反序列化回调事件json数据
-            JSONObject eventJson = JSONObject.parseObject(decryptMsg);
 
             DingdingCallBackDTO dingdingCallBackDTO = JSONObject.parseObject(decryptMsg, DingdingCallBackDTO.class);
 
@@ -64,16 +63,16 @@ public class DingdingController extends BaseController {
             if ("check_url".equals(dingdingCallBackDTO.getEventType())) {
                 //OA审核费用单回调. 根据processInstanceId调用接口.
             } else if ("bpms_instance_change".equals(dingdingCallBackDTO.getEventType())) {
-                dingdingService.getProcessinstance(eventJson.getString("processInstanceId"));
+                dingdingService.getProcessinstance(dingdingCallBackDTO.getProcessInstanceId(),customkey,dingdingCallBackDTO.getType());
                 //员工角色信息发生变更。
             } else if ("label_user_change".equals(dingdingCallBackDTO.getEventType())) {
                 if ("add".equals(dingdingCallBackDTO.getAction())) {
-                    APIResultDTO<String> apiResultDTO = dingdingService.addUserByRoleId(eventJson.getString("UserIdList"), customkey);
+                    APIResultDTO<String> apiResultDTO = dingdingService.addUserByRoleId(dingdingCallBackDTO.getEventType(), customkey);
                     if (apiResultDTO.isFlag()) {
                         LogUtil.info("{}", "角色添加成功");
                     }
                 } else if ("remove".equals(dingdingCallBackDTO.getAction())) {
-                    APIResultDTO<String> apiResultDTO = dingdingService.removeUserByRoleId(eventJson.getString("UserIdList"), customkey, dingdingCallBackDTO.getLabelIdList());
+                    APIResultDTO<String> apiResultDTO = dingdingService.removeUserByRoleId(dingdingCallBackDTO.getEventType(), customkey, dingdingCallBackDTO.getLabelIdList());
                     if (apiResultDTO.isFlag()) {
                         LogUtil.info("{}", "角色删除成功");
                     }
